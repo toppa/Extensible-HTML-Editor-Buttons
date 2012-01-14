@@ -1,0 +1,12 @@
+.buttonable_dialog input[type="submit"] {
+    margin-left: 5px;
+}
+
+.buttonable_dialog .form-table {
+    width: auto;
+}
+
+.buttonable_dialog .form-table th {
+    width: auto;
+}
+

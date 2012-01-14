@@ -1,0 +1,55 @@
+<?php
+
+class ButtonableInstall {
+    private $settings;
+    private $settingsDefaults = array(
+        'buttons' => array(
+            'div' => array(
+                'tag' => 'div',
+                'title' => 'add div tag',
+                'id' => 'ed_div',
+                'self_close' => 'n',
+                'shortcode' => 'n',
+                'active' => 'y',
+                'input_dialog' => 'y'),
+            'span' => array(
+                'tag' => 'span',
+                'title' => 'add span tag',
+                'id' => 'ed_span',
+                'self_close' => 'n',
+                'shortcode' => 'n',
+                'active' => 'y',
+                'input_dialog' => 'y'),
+            'anchor' => array(
+                'tag' => 'a',
+                'title' => 'add anchor tag',
+                'id' => 'ed_anchor',
+                'self_close' => 'n',
+                'shortcode' => 'n',
+                'active' => 'y',
+                'input_dialog' => 'y'),
+            'image' => array(
+                'tag' => 'img',
+                'title' => 'add image tag',
+                'id' => 'ed_image',
+                'self_close' => 'y',
+                'shortcode' => 'n',
+                'active' => 'y',
+                'input_dialog' => 'y'),
+        ),
+        'customButtons' => array(),
+        'externalPluginButtons' => array()
+    );
+
+    public function __construct() {
+    }
+
+    public function setSettings(ButtonableSettings $settings) {
+        $this->settings = $settings;
+        return $this->settings;
+    }
+
+    public function run() {
+        return $this->settings->set($this->settingsDefaults, true);
+    }
+}
