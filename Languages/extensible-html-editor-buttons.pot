@@ -1,0 +1,266 @@
+# Copyright (C) 2012 
+# This file is distributed under the same license as the  package.
+msgid ""
+msgstr ""
+"Project-Id-Version:  \n"
+"Report-Msgid-Bugs-To: http://wordpress.org/tag/extensible-html-editor-"
+"buttons\n"
+"POT-Creation-Date: 2012-01-15 00:24:12+00:00\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"PO-Revision-Date: 2012-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+
+#: ButtonableSettingsMenuHandler.php:51
+msgid "Requested action not recognized"
+msgstr ""
+
+#: ButtonableSettingsMenuHandler.php:55
+msgid "Settings not saved. All fields for custom buttons are required"
+msgstr ""
+
+#: ButtonableSettingsMenuHandler.php:59
+msgid "Settings saved"
+msgstr ""
+
+#: ButtonableSettingsMenuDisplayer.php:43
+#: Tests/UnitButtonableCustomButtonRefData.php:33
+#: Tests/UnitButtonableCustomButtonRefData.php:47
+#: Tests/UnitButtonableCustomButtonRefData.php:54
+#: ButtonableCustomButtonRefData.php:28 ButtonableCustomButtonRefData.php:42
+#: ButtonableCustomButtonRefData.php:49
+msgid "Yes"
+msgstr ""
+
+#: ButtonableSettingsMenuDisplayer.php:43
+#: Tests/UnitButtonableCustomButtonRefData.php:33
+#: Tests/UnitButtonableCustomButtonRefData.php:47
+#: Tests/UnitButtonableCustomButtonRefData.php:54
+#: ButtonableCustomButtonRefData.php:28 ButtonableCustomButtonRefData.php:42
+#: ButtonableCustomButtonRefData.php:49
+msgid "No"
+msgstr ""
+
+#: ButtonableSettingsMenuDisplayer.php:51
+msgid "Use"
+msgstr ""
+
+#: ButtonableSettingsMenuDisplayer.php:51
+msgid "button?"
+msgstr ""
+
+#: ButtonableSettingsMenuDisplayer.php:60
+#: ButtonableSettingsMenuDisplayer.php:110
+msgid "No buttons of this type are currently defined"
+msgstr ""
+
+#: ButtonableSettingsMenuDisplayer.php:74
+#: ButtonableSettingsMenuDisplayer.php:155
+msgid "Name"
+msgstr ""
+
+#: ButtonableSettingsMenuDisplayer.php:96
+msgid "Delete"
+msgstr ""
+
+#: ButtonableSettingsMenuDisplayer.php:136
+msgid "Unrecognized button property type"
+msgstr ""
+
+#: ButtonableSettingsMenuDisplayer.php:160
+msgid ""
+"A name to refer to your button. This will be the label shown on the button "
+"in the HTML Editor, so it should be short."
+msgstr ""
+
+#: start.php:28
+msgid "To activate Extensible HTML Editor Buttons you need to first install"
+msgstr ""
+
+#: start.php:34
+msgid "You must have at least PHP 5.1.2 to use Extensible HTML Editor Buttons"
+msgstr ""
+
+#: start.php:38
+msgid ""
+"You must have at least WordPress 3.1 to use Extensible HTML Editor Buttons"
+msgstr ""
+
+#: Tests/UnitButtonableCustomButtonRefData.php:15
+#: ButtonableCustomButtonRefData.php:10
+msgid "Tag"
+msgstr ""
+
+#: Tests/UnitButtonableCustomButtonRefData.php:16
+#: ButtonableCustomButtonRefData.php:11
+msgid ""
+"The tag your button will insert, not including delimiters - do not include "
+"&lt; &gt; or [ ] - example: \"blink\""
+msgstr ""
+
+#: Tests/UnitButtonableCustomButtonRefData.php:21
+#: ButtonableCustomButtonRefData.php:16
+msgid "Title"
+msgstr ""
+
+#: Tests/UnitButtonableCustomButtonRefData.php:22
+#: ButtonableCustomButtonRefData.php:17
+msgid ""
+"Title text for your button; appears as mouseover help text in most browsers "
+"- example: \"For really annoying blinking text\""
+msgstr ""
+
+#: Tests/UnitButtonableCustomButtonRefData.php:27
+#: ButtonableCustomButtonRefData.php:22
+msgid "ID"
+msgstr ""
+
+#: Tests/UnitButtonableCustomButtonRefData.php:28
+#: ButtonableCustomButtonRefData.php:23
+msgid ""
+"The id of your button. This should start with \"ed_\" - example: \"ed_blink\""
+msgstr ""
+
+#: Tests/UnitButtonableCustomButtonRefData.php:34
+#: ButtonableCustomButtonRefData.php:29
+msgid "Self closing tag"
+msgstr ""
+
+#: Tests/UnitButtonableCustomButtonRefData.php:35
+#: ButtonableCustomButtonRefData.php:30
+msgid ""
+"Whether your tag self closes (like an &lt;img&gt; tag) or has a separate "
+"closing tag (like a &lt;/p&gt; tag)"
+msgstr ""
+
+#: Tests/UnitButtonableCustomButtonRefData.php:40
+#: ButtonableCustomButtonRefData.php:35
+msgid "Shortcode"
+msgstr ""
+
+#: Tests/UnitButtonableCustomButtonRefData.php:40
+#: ButtonableCustomButtonRefData.php:35
+msgid "HTML"
+msgstr ""
+
+#: Tests/UnitButtonableCustomButtonRefData.php:41
+#: ButtonableCustomButtonRefData.php:36
+msgid "Tag type"
+msgstr ""
+
+#: Tests/UnitButtonableCustomButtonRefData.php:42
+#: ButtonableCustomButtonRefData.php:37
+msgid ""
+"Whether your tag is a shortcode tag with [ ] delimiters, or an HTML tag with "
+"&lt; &gt; delimiters"
+msgstr ""
+
+#: Tests/UnitButtonableCustomButtonRefData.php:48
+#: ButtonableCustomButtonRefData.php:43
+msgid "Enabled"
+msgstr ""
+
+#: Tests/UnitButtonableCustomButtonRefData.php:49
+#: ButtonableCustomButtonRefData.php:44
+msgid ""
+"Whether your button is enabled in the button bar, or disabled and not shown "
+"in the button bar"
+msgstr ""
+
+#: Tests/UnitButtonableCustomButtonRefData.php:55
+#: ButtonableCustomButtonRefData.php:50
+msgid "Custom Dialog"
+msgstr ""
+
+#: Tests/UnitButtonableCustomButtonRefData.php:56
+#: ButtonableCustomButtonRefData.php:51
+msgid ""
+"Select \"yes\" to enable a custom input dialog for your button. The dialog "
+"is where you can accept user input for your tag's attributes. Example: for a "
+"blink tag, your form dialog would accept a value for blink's \"rate\" "
+"attribute. All custom dialogs belong in your plugin directory, in the file "
+"buttonable/display/custom-dialogs.html (further instructions are in custom-"
+"dialogs-example.html)."
+msgstr ""
+
+#: Display/settings.php:6 Display/settings.php:7
+msgid "Support this plugin"
+msgstr ""
+
+#: Display/settings.php:7
+msgid "Support Extensible HTML Editor Buttons"
+msgstr ""
+
+#: Display/settings.php:8
+msgid "Extensible HTML Editor Buttons Help"
+msgstr ""
+
+#: Display/settings.php:12
+msgid "Extensible HTML Editor Buttons Settings"
+msgstr ""
+
+#: Display/settings.php:23
+msgid "Extensible HTML Editor Buttons"
+msgstr ""
+
+#: Display/settings.php:25
+msgid "Your custom buttons"
+msgstr ""
+
+#: Display/settings.php:27
+msgid "Buttons from other plugins"
+msgstr ""
+
+#: Display/settings.php:31
+msgid "Update Buttons"
+msgstr ""
+
+#: Display/settings.php:41
+msgid "Add a custom button"
+msgstr ""
+
+#: Display/settings.php:45
+msgid "Add Button"
+msgstr ""
+
+#: ButtonableExternalButtonHandler.php:25
+msgid "the 1st argument ($handle) must be a string"
+msgstr ""
+
+#: ButtonableExternalButtonHandler.php:29
+msgid "the 2nd argument ($tag) must be a string"
+msgstr ""
+
+#: ButtonableExternalButtonHandler.php:33
+msgid "the 3rd argument ($title) must be a string"
+msgstr ""
+
+#: ButtonableExternalButtonHandler.php:37
+msgid "the 4th argument ($id) must be a string"
+msgstr ""
+
+#: ButtonableExternalButtonHandler.php:41
+msgid "the 5th argument ($selfClose) must be \"y\" or \"n\""
+msgstr ""
+
+#: ButtonableExternalButtonHandler.php:45
+msgid "the 6th argument ($shortcode) must be \"y\" or \"n\""
+msgstr ""
+
+#: Buttonable.php:23
+msgid "Activation of Extensible HTML Editor Buttons failed. Error Message: "
+msgstr ""
+
+#: Buttonable.php:98
+msgid "Extensible HTML Editor Buttons Error"
+msgstr ""
+
+#: Buttonable.php:128
+msgid "Registration of button failed. Error Message: "
+msgstr ""
+
+#: Buttonable.php:150
+msgid "Deregistration of button failed. Error Message: "
+msgstr ""
