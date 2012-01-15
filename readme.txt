@@ -10,10 +10,10 @@ A plugin for adding custom buttons to the WordPress HTML Editor, including custo
 
 == Description ==
 
-Extensible HTML Editor Buttons enhances the WordPress HTML Editor button bar in 4 ways:
+Extensible HTML Editor Buttons enhances the WordPress HTML Editor button bar in 5 ways:
 
 1. Provides a WYSIWYG settings form for adding your own custom buttons
-1. Provides an example HTML HTML, which you can follow to add your own custom modal input dialogs for your custom buttons, for setting tag attributes such as style, class, or any attributes you specify
+1. Provides an example HTML file, which you can follow to add your own custom modal input dialogs for your custom buttons, for setting tag attributes such as style, class, or any attributes you specify
 1. Adds two new buttons: div and span, each with their own modal input dialogs, for class, style, etc. attributes (you can disable then if you wish)
 1. Gives you the option to replace the standard anchor and image buttons with new versions that provide modal input dialogs with more options (class, style, image width, height, etc.)
 1. Provides an API for other plugins to add their own buttons and custom modal dialogs
