@@ -96,7 +96,7 @@ jQuery(document).ready(function($) {
                         this.tagEnd = tagEnd;
                     }
 
-                    // unfortunately WP's quicktags API is incompletere.
+                    // unfortunately WP's quicktags API is incomplete.
                     // Expected methods don't exist when called through it. We
                     // need our own versions of isOpen() and openTag() to
                     // attach to "this" so we don't get javascript errors.
