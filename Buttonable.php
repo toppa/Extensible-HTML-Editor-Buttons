@@ -29,7 +29,7 @@ class Buttonable {
     public function run() {
         add_action('admin_menu', array($this, 'initSettingsMenu'));
         add_action('admin_footer', array($this, 'initButtons'));
-        add_action('admin_head', array($this, 'hideQtLinkAndImgButtonsIfRequested'));
+        add_action('admin_head', array($this, 'hideInactiveElements'));
     }
 
     public function initSettingsMenu() {
@@ -66,11 +66,11 @@ class Buttonable {
         }
     }
 
-    public function hideQtLinkAndImgButtonsIfRequested() {
+    public function hideInactiveElements() {
         try {
             $container = new ButtonableContainer($this->autoLoader);
             $editorHandler = $container->getEditorHandler();
-            echo $editorHandler->hideQtLinkAndImgButtonsIfRequested();
+            echo $editorHandler->hideInactiveElements();
         }
 
         catch (Exception $e) {

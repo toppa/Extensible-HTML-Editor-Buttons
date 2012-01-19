@@ -4,7 +4,7 @@ Donate link: http://www.toppa.com/extensible-html-editor-buttons-wordpress-plugi
 Tags: post, admin, button, editor, jquery, quicktag
 Requires at least: 3.3
 Tested up to: 3.3.1
-Stable tag: 1.0
+Stable tag: 1.0.1
 
 A plugin for adding custom buttons to the WordPress HTML Editor, including custom modal dialogs.
 
@@ -39,5 +39,5 @@ Please go to <a href="http://www.toppa.com/extensible-html-editor-buttons-wordpr
 
 == Changelog ==
 
-= 1.0 =
-* First version
+= 1.0.1 = Bug fix: Hide dialogs for inactive buttons
+= 1.0 = First version

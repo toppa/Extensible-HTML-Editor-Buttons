@@ -25,7 +25,7 @@ class ButtonableEditorHandler {
         return $this->scriptName;
     }
 
-    public function hideQtLinkAndImgButtonsIfRequested() {
+    public function hideInactiveElements() {
         if (!in_array(basename($_SERVER['SCRIPT_NAME']), $this->pages) ) {
             return null;
         }
@@ -36,8 +36,24 @@ class ButtonableEditorHandler {
             $style .= '#qt_content_link { display: none; }' . PHP_EOL;
         }
 
+        else {
+            $style .= '#buttonable_anchor_dialog { display: none; }' . PHP_EOL;
+        }
+
         if ($this->settings->buttons['image']['active'] == 'y') {
             $style .= '#qt_content_img { display: none; }' . PHP_EOL;
+        }
+
+        else {
+            $style .= '#buttonable_image_dialog { display: none; }' . PHP_EOL;
+        }
+
+        if ($this->settings->buttons['div']['active'] == 'n') {
+            $style .= '#buttonable_div_dialog { display: none; }' . PHP_EOL;
+        }
+
+        if ($this->settings->buttons['span']['active'] == 'n') {
+            $style .= '#buttonable_span_dialog { display: none; }' . PHP_EOL;
         }
 
         $style .= '</style>' . PHP_EOL;
