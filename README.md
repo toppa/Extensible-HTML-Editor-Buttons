@@ -1,13 +1,15 @@
-ElectNext installation guide
-============================
+# ElectNext installation guide
 
 The following steps are for an installation of ElectNext on Ubuntu 11.10, and assumes a fresh environment, so it covers installing Rails, etc as well. Environment setup steps will vary on other platforms. ElectNext requires Postgres, and requires a reverse proxy server running https, that points to a standard http server. This guide uses Nginx with Phusion Passenger, but other web servers can be used.
 
 ## Setup Ruby, Rails, and the ElectNext codebase
 
 1. The ElectNext codebase is on GitHub in a private repository, so you will first need to get access to it. You will also need a dumpfile of the database before proceeding.
+
 1. Install git if needed
+
 	`sudo apt-get install git`
+
 1. From within the desired parent directory, clone the project
 
 		git clone https://github.com/ElectNext/electnext.git
