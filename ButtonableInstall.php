@@ -49,7 +49,28 @@ class ButtonableInstall {
         return $this->settings;
     }
 
+    public function setFunctionsFacade(ToppaFunctionsFacade $functionsFacade) {
+        $this->functionsFacade = $functionsFacade;
+        return $this->functionsFacade;
+    }
+
     public function run() {
+        return $this->functionsFacade->callFunctionForNetworkSites(array($this, 'runForNetworkSites'));
+    }
+
+    public function runForNetworkSites() {
         return $this->settings->set($this->settingsDefaults, true);
     }
+
+    public function runtimeUpgrade() {
+        $status = buttonableActivationChecks();
+
+        if (is_string($status)) {
+            buttonableCancelActivation($status);
+            return null;
+        }
+
+        return $this->run();
+    }
+
 }
