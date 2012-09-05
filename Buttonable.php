@@ -1,13 +1,13 @@
 <?php
 
 class Buttonable {
-    private $version = '1.1';
+    private $version = '1.1.1';
     private $customDialogPath;
     private $customDialogBackupPath;
 
     public function __construct() {
         $this->customDialogPath = dirname(__FILE__) . '/Display/custom-dialogs.html';
-        $this->customDialogBackupPath = dirname(__FILE__) . '/../custom-dialogs.html';
+        $this->customDialogBackupPath = dirname(dirname(__FILE__)) . '/custom-dialogs.html';
     }
 
     public function getVersion() {
@@ -30,8 +30,8 @@ class Buttonable {
 
     public function run() {
         add_action('admin_init', array($this, 'runtimeUpgrade'));
-        add_filter('upgrader_pre_install', 'backupCustomDialogs');
-        add_filter('upgrader_post_install', 'restoreCustomDialogs');
+        add_filter('upgrader_pre_install', 'backupCustomDialogs', 10, 0);
+        add_filter('upgrader_post_install', 'restoreCustomDialogs', 10, 0);
         add_action('admin_menu', array($this, 'initSettingsMenu'));
         add_action('admin_footer', array($this, 'initButtons'));
         add_action('admin_head', array($this, 'hideInactiveElements'));
@@ -54,10 +54,9 @@ class Buttonable {
     public function backupCustomDialogs() {
         if (file_exists($this->customDialogPath)) {
             return copy($this->customDialogPath, $this->customDialogBackupPath);
-
         }
 
-        return true;
+        return null;
     }
 
     public function restoreCustomDialogs() {
@@ -69,7 +68,7 @@ class Buttonable {
             }
         }
 
-        return true;
+        return null;
     }
 
     public function initSettingsMenu() {
