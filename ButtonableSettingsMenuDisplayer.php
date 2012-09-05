@@ -78,6 +78,10 @@ class ButtonableSettingsMenuDisplayer {
                 $buttonRefData = $this->customButtonRefData->getRefData();
 
                 foreach ($values as $k=>$v) {
+                    $buttonRefData[$k]['options'] = isset($buttonRefData[$k]['options'])
+                        ? $buttonRefData[$k]['options']
+                        : null;
+
                     $refData = $this->getRefDataForButtonProperty(
                         $buttonRefData[$k]['type'],
                         $buttonRefData[$k]['options']
@@ -164,6 +168,7 @@ class ButtonableSettingsMenuDisplayer {
         $buttonRefData = $this->customButtonRefData->getRefData();
 
         foreach ($buttonRefData as $k=>$v) {
+            $v['options'] = isset($v['options']) ? $v['options'] : null;
             $refData = $this->getRefDataForButtonProperty($v['type'], $v['options']);
             $inputValue = ($addButtonValidation) ? $addButtonValidation["settings[$k]"] : $v['default'];
             $html .= '<tr valign="top">' . PHP_EOL;
