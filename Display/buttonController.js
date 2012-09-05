@@ -59,7 +59,6 @@ jQuery(document).ready(function($) {
                 QTags.addButton(buttonableIds[index], handle, currentButtonableTag, window.buttonableTagOpen[handle] + '/' + buttonableTags[index] + window.buttonableTagClose[handle]);
             }
         }
-
     });
 
     function handleButtonableDialog(element, canvas, ed) {
