@@ -1,11 +1,13 @@
 <?php
 
 class Buttonable {
-    private $version = '1.0';
-    private $autoLoader;
+    private $version = '1.1';
+    private $customDialogPath;
+    private $customDialogBackupPath;
 
-    public function __construct(ToppaAutoloader $autoLoader) {
-        $this->autoLoader = $autoLoader;
+    public function __construct() {
+        $this->customDialogPath = dirname(__FILE__) . '/Display/custom-dialogs.html';
+        $this->customDialogBackupPath = dirname(__FILE__) . '/../custom-dialogs.html';
     }
 
     public function getVersion() {
@@ -14,7 +16,7 @@ class Buttonable {
 
     public function install() {
         try {
-            $container = new ButtonableContainer($this->autoLoader);
+            $container = new ButtonableContainer();
             $installer = $container->getInstaller();
             $status = $installer->run();
         }
@@ -27,9 +29,47 @@ class Buttonable {
     }
 
     public function run() {
+        add_action('admin_init', array($this, 'runtimeUpgrade'));
+        add_filter('upgrader_pre_install', 'backupCustomDialogs');
+        add_filter('upgrader_post_install', 'restoreCustomDialogs');
         add_action('admin_menu', array($this, 'initSettingsMenu'));
         add_action('admin_footer', array($this, 'initButtons'));
         add_action('admin_head', array($this, 'hideInactiveElements'));
+    }
+
+    public function runtimeUpgrade() {
+        try {
+            $container = new ButtonableContainer();
+            $installer = $container->getInstaller();
+            $status = $installer->runtimeUpgrade();
+            return $status;
+        }
+
+        catch (Exception $e) {
+            return $this->formatExceptionMessage($e);
+        }
+    }
+
+    // inspired by http://hungred.com/how-to/prevent-wordpress-plugin-update-deleting-important-folder-plugin/
+    public function backupCustomDialogs() {
+        if (file_exists($this->customDialogPath)) {
+            return copy($this->customDialogPath, $this->customDialogBackupPath);
+
+        }
+
+        return true;
+    }
+
+    public function restoreCustomDialogs() {
+        if (file_exists($this->customDialogBackupPath)) {
+            $status = copy($this->customDialogBackupPath, $this->customDialogPath);
+
+            if ($status) {
+                return unlink($this->customDialogBackupPath);
+            }
+        }
+
+        return true;
     }
 
     public function initSettingsMenu() {
@@ -44,7 +84,7 @@ class Buttonable {
 
     public function displaySettingsMenu() {
         try {
-            $container = new ButtonableContainer($this->autoLoader);
+            $container = new ButtonableContainer();
             $settingsMenuHandler = $container->getSettingsMenuHandler();
             echo $settingsMenuHandler->run();
         }
@@ -56,7 +96,7 @@ class Buttonable {
 
     public function initButtons() {
         try {
-            $container = new ButtonableContainer($this->autoLoader);
+            $container = new ButtonableContainer();
             $editorHandler = $container->getEditorHandler();
             echo $editorHandler->addButtons();
         }
@@ -68,7 +108,7 @@ class Buttonable {
 
     public function hideInactiveElements() {
         try {
-            $container = new ButtonableContainer($this->autoLoader);
+            $container = new ButtonableContainer();
             $editorHandler = $container->getEditorHandler();
             echo $editorHandler->hideInactiveElements();
         }
@@ -81,16 +121,22 @@ class Buttonable {
 
     public function uninstall() {
         try {
-            $container = new ButtonableContainer($this->autoLoader);
-            $settings = $container->getSettings();
-            $settings->delete();
+            $container = new ButtonableContainer();
+            $functionsFacade = $container->getFunctionsFacade();
+            return $this->functionsFacade->callFunctionForNetworkSites(array($this, 'uninstallForNetworkSites'));
         }
 
         catch (Exception $e) {
             echo $this->formatExceptionMessage($e);
         }
 
-        return true;
+        return false;
+    }
+
+    public function uninstallForNetworkSites() {
+        $container = new ButtonableContainer();
+        $settings = $container->getSettings();
+        return $settings->delete();
     }
 
     public function formatExceptionMessage($e) {
@@ -119,7 +165,7 @@ class Buttonable {
     public static function registerButton($handle, $tag, $title, $id, $selfClose, $shortcode, $path = null) {
         try {
             $buttonableAutoLoader = new ToppaAutoLoaderWp('/extensible-html-editor-buttons');
-            $container = new ButtonableContainer($buttonableAutoLoader);
+            $container = new ButtonableContainer();
             $externalButtonHandler = $container->getExternalButtonHandler();
             $externalButtonHandler->registerButton($handle, $tag, $title, $id, $selfClose, $shortcode, $path);
         }
@@ -141,7 +187,7 @@ class Buttonable {
     public static function deregisterButton($handle) {
         try {
             $buttonableAutoLoader = new ToppaAutoLoaderWp('/extensible-html-editor-buttons');
-            $container = new ButtonableContainer($buttonableAutoLoader);
+            $container = new ButtonableContainer();
             $externalButtonHandler = $container->getExternalButtonHandler();
             $externalButtonHandler->deregisterButton($handle);
         }
