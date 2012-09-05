@@ -33,29 +33,31 @@ class ButtonableSettingsMenuHandler {
     public function run() {
         $this->setCleanRequest();
 
-        switch ($this->cleanRequest['buttonableAction']) {
-            case 'addButton':
-                $validateStatus = $this->validateNewCustomButton();
-                $finalActionStatus = $this->saveNewCustomButton($validateStatus);
-                break;
-            case 'updateButtons':
-                $validateStatusForBuiltInButtons = $this->validateUpdatedBuiltInButtons();
-                $saveStatusForBuiltInButtons = $this->saveUpdatedBuiltInButtons($validateStatusForBuiltInButtons);
-                $validateStatusForCustomButtons = $this->validateUpdatedCustomButtons($saveStatusForBuiltInButtons);
-                $saveStatusForCustomButtons = $this->saveUpdatedCustomButtons($validateStatusForCustomButtons);
-                $finalActionStatus = $this->deleteCustomButtons($saveStatusForCustomButtons);
-                break;
-            case null:
-                break;
-            default:
-                throw New Exception(__('Requested action not recognized', 'buttonable'));
+        if (isset($this->cleanRequest['buttonableAction'])) {
+            switch ($this->cleanRequest['buttonableAction']) {
+                case 'addButton':
+                    $validateStatus = $this->validateNewCustomButton();
+                    $finalActionStatus = $this->saveNewCustomButton($validateStatus);
+                    break;
+                case 'updateButtons':
+                    $validateStatusForBuiltInButtons = $this->validateUpdatedBuiltInButtons();
+                    $saveStatusForBuiltInButtons = $this->saveUpdatedBuiltInButtons($validateStatusForBuiltInButtons);
+                    $validateStatusForCustomButtons = $this->validateUpdatedCustomButtons($saveStatusForBuiltInButtons);
+                    $saveStatusForCustomButtons = $this->saveUpdatedCustomButtons($validateStatusForCustomButtons);
+                    $finalActionStatus = $this->deleteCustomButtons($saveStatusForCustomButtons);
+                    break;
+                case null:
+                    break;
+                default:
+                    throw New Exception(__('Requested action not recognized', 'buttonable'));
+            }
         }
 
-        if ($finalActionStatus === false) {
+        if (isset($finalActionStatus) && $finalActionStatus === false) {
             $message = __('Settings not saved. All fields for custom buttons are required', 'buttonable');
         }
 
-        elseif (is_array($finalActionStatus)) {
+        elseif (isset($finalActionStatus) && is_array($finalActionStatus)) {
             $message = __('Settings saved', 'buttonable');
         }
 
@@ -81,7 +83,7 @@ class ButtonableSettingsMenuHandler {
         $buttonRefData = $this->customButtonRefData->getRefData();
 
         foreach ($buttonRefData as $k=>$v) {
-            if (!$this->cleanRequest['buttonableNewButton']['settings'][$k]) {
+            if (!isset($this->cleanRequest['buttonableNewButton']['settings'][$k])) {
                 return false;
             }
         }
@@ -113,7 +115,7 @@ class ButtonableSettingsMenuHandler {
 
     private function validateRequestedButtons($formName, $settingsName) {
         foreach ($this->cleanRequest[$formName] as $handle=>$newSettings) {
-            if ($newSettings['active'] != 'y' && $newSettings['active'] != 'n') {
+            if (isset($newSettings['active']) && $newSettings['active'] != 'y' && $newSettings['active'] != 'n') {
                 return false;
             }
 
@@ -138,7 +140,7 @@ class ButtonableSettingsMenuHandler {
         $settings[$settingsName] = $this->settings->$settingsName;
 
         foreach ($this->cleanRequest[$formName] as $handle=>$newSettings) {
-            $settings[$settingsName][$handle]['active'] = $newSettings['active'];
+            $settings[$settingsName][$handle]['active'] = $newSettings;
         }
 
         $this->settings->set($settings);
@@ -160,7 +162,7 @@ class ButtonableSettingsMenuHandler {
 
         $buttonRefData = $this->customButtonRefData->getRefData();
 
-        if ($this->cleanRequest['buttonableCustomButtons']) {
+        if (isset($this->cleanRequest['buttonableCustomButtons'])) {
             foreach ($this->cleanRequest['buttonableCustomButtons'] as $handle=>$properties) {
                 if (!array_key_exists($handle, $this->settings->customButtons)) {
                     return false;
@@ -185,7 +187,7 @@ class ButtonableSettingsMenuHandler {
         $settings = array();
         $settings['customButtons'] = $this->settings->customButtons;
 
-        if ($this->cleanRequest['buttonableCustomButtons']) {
+        if (isset($this->cleanRequest['buttonableCustomButtons'])) {
             foreach ($this->cleanRequest['buttonableCustomButtons'] as $handle=>$properties) {
                 $settings['customButtons'][$handle] = $properties;
             }
