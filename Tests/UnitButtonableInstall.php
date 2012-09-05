@@ -1,6 +1,7 @@
 <?php
 
 Mock::generate('ButtonableSettings');
+Mock::generate('ToppaFunctionsFacadeWp');
 
 class UnitButtonableInstall extends UnitTestCase {
     public function __construct() {
@@ -19,8 +20,11 @@ class UnitButtonableInstall extends UnitTestCase {
     public function testRun() {
         $settings = new MockButtonableSettings();
         $settings->setReturnValue('set', array());
+        $functionsFacade = new MockToppaFunctionsFacadeWp();
+        $functionsFacade->setReturnValue('callFunctionForNetworkSites', true);
         $installer = new ButtonableInstall();
         $installer->setSettings($settings);
-        $this->assertTrue(is_array($installer->run()));
+        $installer->setFunctionsFacade($functionsFacade);
+        $this->assertTrue($installer->run());
     }
 }

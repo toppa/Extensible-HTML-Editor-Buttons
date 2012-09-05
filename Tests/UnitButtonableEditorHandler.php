@@ -90,6 +90,8 @@ class UnitButtonableEditorHandler extends UnitTestCase {
         $functionsFacade->setReturnValue('requireOnce', 1);
         $functionsFacade->setReturnValue('checkFileExists', true);
         $handler->setFunctionsFacade($functionsFacade);
+        $settings = new MockButtonableSettings();
+        $handler->setSettings($settings);
         $fakeDir = '/some/path/to/file.php';
         $handler->setDisplayDir($fakeDir);
         return $handler;

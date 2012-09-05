@@ -263,11 +263,11 @@ class UnitButtonableSettingsMenuHandler extends UnitTestCase {
         $this->assertTrue($handler->validateUpdatedBuiltInButtons());
     }
 
-    public function testValidateUpdatedBuiltInButtonsWithAnInvalidProperty() {
+    public function testValidateUpdatedBuiltInButtonsWithAnInvalidButtons() {
         $newButtonActiveStatus = array(
         'buttonableBuiltInButtons' => array(
             'div' => array(
-                'foo' => 'bar'), // bad property
+                'active' => 'bar'), // bad value
             'span' => array(
                 'active' => 'n'),
             'anchor' => array(
@@ -305,15 +305,11 @@ class UnitButtonableSettingsMenuHandler extends UnitTestCase {
 
     public function testSaveUpdatedBuiltInButtonsWithValidButtons() {
         $newButtonActiveStatus = array(
-        'buttonableBuiltInButtons' => array(
-            'div' => array(
-                'active' => 'n'),
-            'span' => array(
-                'active' => 'n'),
-            'anchor' => array(
-                'active' => 'n'),
-            'img' => array(
-                'active' => 'n'),
+            'buttonableBuiltInButtons' => array(
+                'div' => 'n',
+                'span' => 'n',
+                'anchor' => 'n',
+                'img' => 'n',
             )
         );
 
@@ -389,15 +385,11 @@ class UnitButtonableSettingsMenuHandler extends UnitTestCase {
 
     public function testSaveUpdatedExternalPluginButtonsWithValidButtons() {
         $newButtonActiveStatus = array(
-        'buttonableExternalPluginButtons' => array(
-            'div' => array(
-                'active' => 'n'),
-            'span' => array(
-                'active' => 'n'),
-            'anchor' => array(
-                'active' => 'n'),
-            'img' => array(
-                'active' => 'n'),
+            'buttonableExternalPluginButtons' => array(
+                'div' => 'n',
+                'span' => 'n',
+                'anchor' => 'n',
+                'img' => 'n',
             )
         );
 
