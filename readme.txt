@@ -4,7 +4,7 @@ Donate link: http://www.toppa.com/extensible-html-editor-buttons-wordpress-plugi
 Tags: post, admin, button, editor, jquery, quicktag
 Requires at least: 3.3
 Tested up to: 3.4.1
-Stable tag: 1.1
+Stable tag: 1.1.1
 
 A plugin for adding custom buttons to the WordPress HTML Editor, including custom modal dialogs.
 
@@ -12,6 +12,7 @@ A plugin for adding custom buttons to the WordPress HTML Editor, including custo
 
 Extensible HTML Editor Buttons enhances the WordPress HTML Editor button bar in 5 ways:
 
+1. New in version 1.1: now multi-site compatible
 1. Provides a WYSIWYG settings form for adding your own custom buttons
 1. Provides an example HTML file, which you can follow to add your own custom modal input dialogs for your custom buttons, for setting tag attributes such as style, class, or any attributes you specify
 1. Adds two new buttons: div and span, each with their own modal input dialogs, for class, style, etc. attributes (you can disable then if you wish)
@@ -39,10 +40,12 @@ Please go to <a href="http://www.toppa.com/extensible-html-editor-buttons-wordpr
 
 == Changelog ==
 
+= 1.1.1 = Revisions to backup and restore code for custom dialogs, and added integration tests for it. Note this can only work if your web server has read and write permissions for your plugins folder.
+
 = 1.1 =
 
 * Backup and restore custom dialogs file when upgrading
-* Support runtime upgrades (e.g via FTP with de/activate cycle on plugin menu)
+* Support runtime upgrades (e.g via FTP without de/activate cycle on plugin menu)
 * Support use in multisite networks
 * Code cleanup: remove unneeded passing around of autoLoader object
 * Code cleanup: remove all PHP warnings
