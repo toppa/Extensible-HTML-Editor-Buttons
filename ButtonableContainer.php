@@ -1,7 +1,6 @@
 <?php
 
 class ButtonableContainer {
-    private $autoLoader;
     private $functionsFacade;
     private $settings;
     private $installer;
@@ -11,8 +10,7 @@ class ButtonableContainer {
     private $editorHandler;
     private $externalButtonHandler;
 
-    public function __construct($autoLoader) {
-        $this->autoLoader = $autoLoader;
+    public function __construct() {
     }
 
     public function getFunctionsFacade() {
@@ -35,8 +33,10 @@ class ButtonableContainer {
     public function getInstaller() {
         if (!$this->installer) {
             $this->getSettings();
+            $this->getFunctionsFacade();
             $this->installer = new ButtonableInstall();
             $this->installer->setSettings($this->settings);
+            $this->installer->setFunctionsFacade($this->functionsFacade);
         }
 
         return $this->installer;
