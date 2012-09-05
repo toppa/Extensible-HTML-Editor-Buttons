@@ -75,11 +75,17 @@ class ButtonableEditorHandler {
 
     public function enqueueScriptsAndStylesheets() {
         $displayUrl = $this->functionsFacade->getPluginsUrl('/Display/', __FILE__);
-        $this->functionsFacade->enqueueScript('buttonableJs', $displayUrl . 'buttonController.js', array('quicktags'), false);
-        $this->functionsFacade->enqueueScript('jquery', false);
-        $this->functionsFacade->enqueueScript('jquery-form', false);
-        $this->functionsFacade->enqueueScript('jquery-ui-dialog', false);
-        $this->functionsFacade->enqueueScript('jquery-ui-draggable', false);
+        $this->functionsFacade->enqueueScript(
+            'buttonableJs',
+            $displayUrl . 'buttonController.js',
+            array(
+                'jquery',
+                'jquery-form',
+                'jquery-ui-dialog',
+                'jquery-ui-draggable',
+                'quicktags'),
+            false
+        );
         $this->functionsFacade->enqueueStylesheet('buttonableStyle', $displayUrl . 'buttonable.css');
         return true;
     }
@@ -101,7 +107,7 @@ class ButtonableEditorHandler {
 
             foreach ($this->settings->$group as $handle=>$button) {
                 if ($button['active'] == 'y') {
-                    $handles[] = $handle;
+                    $handles[] = strtolower($handle);
                     $tags[] = $button['tag'];
                     $titles[] = $button['title'];
                     $ids[] = $button['id'];
