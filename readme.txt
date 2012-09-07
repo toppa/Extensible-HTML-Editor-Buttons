@@ -13,12 +13,13 @@ A plugin for adding custom buttons to the WordPress HTML Editor, including custo
 
 Extensible HTML Editor Buttons enhances the WordPress HTML Editor button bar in 5 ways:
 
-1. New in version 1.1: multi-site compatible, and preserves your custom-dialogs.html file (but you will still need to backup and restore it yourself one more time, since the old version of the plugin doesn't have the code for doing the backup before the plugin upgrade is initiated)
 1. Provides a WYSIWYG settings form for adding your own custom buttons
 1. Provides an example HTML file, which you can follow to add your own custom modal input dialogs for your custom buttons, for setting tag attributes such as style, class, or any attributes you specify
 1. Adds two new buttons: div and span, each with their own modal input dialogs, for class, style, etc. attributes (you can disable then if you wish)
 1. Gives you the option to replace the standard anchor and image buttons with new versions that provide modal input dialogs with more options (class, style, image width, height, etc.)
 1. Provides an API for other plugins to add their own buttons and custom modal dialogs
+
+New in version 1.1: multi-site compatible, and preserves your custom-dialogs.html file (but you will still need to backup and restore it yourself one more time, since the old version of the plugin doesn't have the code for doing the backup before the plugin upgrade is initiated)
 
 **Installation of [Toppa Plugin Libraries for WordPress](http://wordpress.org/extend/plugins/toppa-plugin-libraries-for-wordpress/) is required for this plugin. Please download and install it first.**
 
