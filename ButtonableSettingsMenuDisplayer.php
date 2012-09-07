@@ -161,7 +161,7 @@ class ButtonableSettingsMenuDisplayer {
             . ToppaHtmlFormField::quickBuild('buttonableNewButton[handle]', $refData, $addButtonValidation['handle'])
             . '</td>' . PHP_EOL;
         $html .= '<td>'
-            . __('A name to refer to your button. This will be the label shown on the button in the HTML Editor, so it should be short.', 'buttonable')
+            . __('The label shown on the button in the HTML Editor, so keep it short. Also, if you create a custom dialog, use this for naming it\'s elements - example: for "blink" the div id of your form would be "buttonable_blink_dialog"', 'buttonable')
             . '</td>' . PHP_EOL;
         $html .= '</tr>' . PHP_EOL;
 

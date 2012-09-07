@@ -3,8 +3,9 @@ Contributors: toppa
 Donate link: http://www.toppa.com/extensible-html-editor-buttons-wordpress-plugin
 Tags: post, admin, button, editor, jquery, quicktag
 Requires at least: 3.3
-Tested up to: 3.4.1
-Stable tag: 1.1.3
+Tested up to: 3.4.2
+Stable tag: 1.1.4
+License: GPLv2 or later
 
 A plugin for adding custom buttons to the WordPress HTML Editor, including custom modal dialogs.
 
@@ -12,7 +13,7 @@ A plugin for adding custom buttons to the WordPress HTML Editor, including custo
 
 Extensible HTML Editor Buttons enhances the WordPress HTML Editor button bar in 5 ways:
 
-1. New in version 1.1: now multi-site compatible
+1. New in version 1.1: multi-site compatible, and preserves your custom-dialogs.html file (but you will still need to backup and restore it yourself one more time, since the old version of the plugin doesn't have the code for doing the backup before the plugin upgrade is initiated)
 1. Provides a WYSIWYG settings form for adding your own custom buttons
 1. Provides an example HTML file, which you can follow to add your own custom modal input dialogs for your custom buttons, for setting tag attributes such as style, class, or any attributes you specify
 1. Adds two new buttons: div and span, each with their own modal input dialogs, for class, style, etc. attributes (you can disable then if you wish)
@@ -40,8 +41,9 @@ Please go to <a href="http://www.toppa.com/extensible-html-editor-buttons-wordpr
 
 == Changelog ==
 
+= 1.1.4 = Documentation improvements
 
-= 1.1.1 - 1.1.3 = Revisions to backup and restore code for custom dialogs, and added integration tests for it. Note this can only work if your web server has read and write permissions for your plugins folder. Also it will not work on your first upgrade, since the old version does not have the pre-plugin update call that makes the backup copy.
+= 1.1.1 - 1.1.3 = Revisions to backup and restore code for custom dialogs, and added integration tests for it. Note this will not work on your first upgrade, since the old version does not have the pre-plugin update call that makes the backup copy.
 
 = 1.1 =
 
