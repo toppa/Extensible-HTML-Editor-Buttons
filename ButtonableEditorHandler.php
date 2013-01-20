@@ -159,12 +159,10 @@ class ButtonableEditorHandler {
 
     public function includeExternalDialogs() {
         if (is_array($this->settings->externalPluginButtons)) {
-            $basePath = substr($this->functionsFacade->getBasePath(), 0, -1); // remove the trailing slash
-
             foreach($this->settings->externalPluginButtons as $button) {
                 if ($button['active'] == 'y' && $button['input_dialog'] == 'y') {
-                    if ($this->functionsFacade->checkFileExists($basePath . $button['path'])) {
-                        $this->functionsFacade->requireOnce($basePath . $button['path']);
+                    if ($this->functionsFacade->checkFileExists($button['path'])) {
+                        $this->functionsFacade->requireOnce($button['path']);
                     }
                 }
             }
