@@ -25,7 +25,7 @@ New in version 1.1: multi-site compatible, and preserves your custom-dialogs.htm
 
 A translation file is included for language localization. If you are bilingual, please contribute a translation!
 
-**Installation Instructions**
+== Installation ==
 
 1. Install the [Toppa Plugin Libraries for WordPress](http://wordpress.org/extend/plugins/toppa-plugin-libraries-for-wordpress/) plugin
 1. Install Extensible HTML Editor Buttons in your plugin folder and activate.
