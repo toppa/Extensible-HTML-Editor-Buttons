@@ -59,13 +59,9 @@ class ButtonableExternalButtonHandler {
             )
         );
 
-        if (is_string($path)) {
-            $basePath = substr($this->functionsFacade->getBasePath(), 0, -1); // remove the trailing slash
-
-            if (file_exists($basePath . $path)) {
-                $buttonableSettings['externalPluginButtons'][$handle]['input_dialog'] = 'y';
-                $buttonableSettings['externalPluginButtons'][$handle]['path'] = $path;
-            }
+        if (is_string($path) && file_exists($path)) {
+            $buttonableSettings['externalPluginButtons'][$handle]['input_dialog'] = 'y';
+            $buttonableSettings['externalPluginButtons'][$handle]['path'] = $path;
         }
 
         $this->settings->set($buttonableSettings);
@@ -73,9 +69,7 @@ class ButtonableExternalButtonHandler {
     }
 
     public function deregisterButton($handle) {
-        $buttonableSettings = $this->settings->refresh();
-        unset($buttonableSettings['externalPluginButtons'][$handle]);
-        $this->settings->set($buttonableSettings);
+        $this->settings->purge(array('externalPluginButtons', $handle));
         return true;
     }
 }
