@@ -1,9 +1,11 @@
 <?php
 
 Mock::generate('ButtonableSettings');
-Mock::generate('ToppaFunctionsFacadeWp');
+Mock::generate('ButtonableFunctionsFacade');
 
 class UnitButtonableEditorHandler extends UnitTestCase {
+    private $startPath = '/some/path/to/extensible-html-editor-buttons/start.php';
+    
     public function __construct() {
         $this->UnitTestCase();
     }
@@ -13,38 +15,38 @@ class UnitButtonableEditorHandler extends UnitTestCase {
 
     public function testSetSettings() {
         $settings = new MockButtonableSettings();
-        $handler = new ButtonableEditorHandler();
+        $handler = new ButtonableEditorHandler($this->startPath);
         $this->assertEqual($handler->setSettings($settings), $settings);
     }
 
     public function testSetFunctionsFacade() {
-        $functionsFacade = new MockToppaFunctionsFacadeWp();
-        $handler = new ButtonableEditorHandler();
+        $functionsFacade = new MockButtonableFunctionsFacade();
+        $handler = new ButtonableEditorHandler($this->startPath);
         $this->assertEqual($handler->setFunctionsFacade($functionsFacade), $functionsFacade);
     }
 
     public function testSetScriptName() {
-        $handler = new ButtonableEditorHandler();
+        $handler = new ButtonableEditorHandler($this->startPath);
         $this->assertEqual($handler->setScriptName('/wordpress/wp-admin/post.php'), '/wordpress/wp-admin/post.php');
     }
 
     public function testAddButtonsWhenNotOnEditorPage() {
-        $handler = new ButtonableEditorHandler();
+        $handler = new ButtonableEditorHandler($this->startPath);
         $handler->setScriptName('/wordpress/wp-admin/edit.php');
         $this->assertNull($handler->addButtons());
     }
 
     // the WP enqueue methods never return anything, so there's no good way to test this
     public function testEnqueueScriptsAndStylesheets() {
-        $handler = new ButtonableEditorHandler();
-        $functionsFacade = new MockToppaFunctionsFacadeWp();
+        $handler = new ButtonableEditorHandler($this->startPath);
+        $functionsFacade = new MockButtonableFunctionsFacade();
         $handler->setFunctionsFacade($functionsFacade);
         $handler->setScriptName('/wordpress/wp-admin/edit.php');
         $this->assertTrue($handler->enqueueScriptsAndStylesheets());
     }
 
     public function testLocalizeButtonableJs() {
-        $handler = new ButtonableEditorHandler();
+        $handler = new ButtonableEditorHandler($this->startPath);
         $settings = new MockButtonableSettings();
         $buttons = array(
             'div' => array(
@@ -69,7 +71,7 @@ class UnitButtonableEditorHandler extends UnitTestCase {
 
         $settings->setReturnValue('__get', $buttons, array('buttons'));
         $handler->setSettings($settings);
-        $functionsFacade = new MockToppaFunctionsFacadeWp();
+        $functionsFacade = new MockButtonableFunctionsFacade();
         $handler->setFunctionsFacade($functionsFacade);
         $expectedResult = array(
             'handles' => "div,span",
@@ -84,9 +86,8 @@ class UnitButtonableEditorHandler extends UnitTestCase {
     }
 
     private function setupHandlerForFileSystemMocking() {
-        $handler = new ButtonableEditorHandler();
-        $functionsFacade = new MockToppaFunctionsFacadeWp();
-        $functionsFacade->setReturnValue('directoryName', '/some/path/to');
+        $handler = new ButtonableEditorHandler($this->startPath);
+        $functionsFacade = new MockButtonableFunctionsFacade();
         $functionsFacade->setReturnValue('requireOnce', 1);
         $functionsFacade->setReturnValue('checkFileExists', true);
         $handler->setFunctionsFacade($functionsFacade);
@@ -99,7 +100,7 @@ class UnitButtonableEditorHandler extends UnitTestCase {
 
     public function testSetDisplayDir() {
         $handler = $this->setupHandlerForFileSystemMocking();
-        $expectedResult = '/some/path/to/Display/';
+        $expectedResult = dirname($this->startPath) . '/Display/';
         $this->assertEqual($handler->getDisplayDir(), $expectedResult);
     }
 
@@ -117,5 +118,4 @@ class UnitButtonableEditorHandler extends UnitTestCase {
         $handler = $this->setupHandlerForFileSystemMocking();
         $this->assertEqual($handler->includeExternalDialogs(), true);
     }
-
 }

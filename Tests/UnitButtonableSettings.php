@@ -1,6 +1,6 @@
 <?php
 
-Mock::generate('ToppaFunctionsFacadeWp');
+Mock::generate('ButtonableFunctionsFacade');
 
 class UnitButtonableSettings extends UnitTestCase {
     private $functionsFacade;
@@ -57,7 +57,7 @@ class UnitButtonableSettings extends UnitTestCase {
     }
 
     public function setUp() {
-        $this->functionsFacade = new MockToppaFunctionsFacadeWp();
+        $this->functionsFacade = new MockButtonableFunctionsFacade();
         $this->functionsFacade->setReturnValue('getSetting', $this->userSettings);
     }
 
@@ -121,7 +121,7 @@ class UnitButtonableSettings extends UnitTestCase {
     }
 
     public function testDeleteSucceeded() {
-        $functionsFacade = new MockToppaFunctionsFacadeWp();
+        $functionsFacade = new MockButtonableFunctionsFacade();
         $functionsFacade->setReturnValue('getSetting', null);
         $settings = new ButtonableSettings($functionsFacade);
         $this->assertTrue($settings->delete());
