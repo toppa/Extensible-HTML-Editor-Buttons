@@ -1,13 +1,15 @@
 <?php
 
 class ButtonableEditorHandler {
+    private $startPath;
     private $settings;
     private $functionsFacade;
     private $scriptName;
     private $pages = array('post-new.php', 'page-new.php', 'post.php', 'page.php', 'comments.php');
     private $displayDir;
 
-    public function __construct() {
+    public function __construct($startPath) {
+        $this->startPath = $startPath;
     }
 
     public function setSettings(ButtonableSettings $settings) {
@@ -15,7 +17,7 @@ class ButtonableEditorHandler {
         return $this->settings;
     }
 
-    public function setFunctionsFacade(ToppaFunctionsFacade $functionsFacade) {
+    public function setFunctionsFacade(ButtonableFunctionsFacade $functionsFacade) {
         $this->functionsFacade = $functionsFacade;
         return $this->functionsFacade;
     }
@@ -67,14 +69,14 @@ class ButtonableEditorHandler {
 
         $this->enqueueScriptsAndStylesheets();
         $this->localizeButtonableJs();
-        $this->setDisplayDir(__FILE__);
+        $this->setDisplayDir();
         $this->includeDialogs();
         $this->includeCustomDialogs();
         $this->includeExternalDialogs();
     }
 
     public function enqueueScriptsAndStylesheets() {
-        $displayUrl = $this->functionsFacade->getPluginsUrl('/Display/', __FILE__);
+        $displayUrl = $this->functionsFacade->getPluginsUrl('/Display/', $this->startPath);
         $this->functionsFacade->enqueueScript(
             'buttonableJs',
             $displayUrl . 'buttonController.js',
@@ -135,9 +137,8 @@ class ButtonableEditorHandler {
         return $implodedButtonGroups;
     }
 
-    public function setDisplayDir($file) {
-        $directoryName = $this->functionsFacade->directoryName($file);
-        $this->displayDir = $directoryName . '/Display/';
+    public function setDisplayDir() {
+        $this->displayDir = dirname($this->startPath) . '/Display/';
         return $this->displayDir;
     }
 
