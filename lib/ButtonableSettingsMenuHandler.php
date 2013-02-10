@@ -44,7 +44,9 @@ class ButtonableSettingsMenuHandler {
                     $saveStatusForBuiltInButtons = $this->saveUpdatedBuiltInButtons($validateStatusForBuiltInButtons);
                     $validateStatusForCustomButtons = $this->validateUpdatedCustomButtons($saveStatusForBuiltInButtons);
                     $saveStatusForCustomButtons = $this->saveUpdatedCustomButtons($validateStatusForCustomButtons);
-                    $finalActionStatus = $this->deleteCustomButtons($saveStatusForCustomButtons);
+                    $deleteStatusForCustomButtons = $this->deleteCustomButtons($saveStatusForCustomButtons);
+                    $validateStatusForExternalButtons = $this->validateUpdatedExternalPluginButtons($deleteStatusForCustomButtons);
+                    $finalActionStatus = $this->saveUpdatedExternalPluginButtons($validateStatusForExternalButtons);
                     break;
                 case null:
                     break;
@@ -53,16 +55,12 @@ class ButtonableSettingsMenuHandler {
             }
         }
 
-        if (isset($finalActionStatus) && $finalActionStatus === false) {
+        if ($finalActionStatus === false) {
             $message = __('Settings not saved. All fields for custom buttons are required', 'buttonable');
         }
 
-        elseif (isset($finalActionStatus) && is_array($finalActionStatus)) {
+        elseif (is_array($finalActionStatus)) {
             $message = __('Settings saved', 'buttonable');
-        }
-
-        else {
-            $message = null;
         }
 
         return $this->settingsMenuDisplayer->run($message);
@@ -70,8 +68,8 @@ class ButtonableSettingsMenuHandler {
 
     public function setCleanRequest() {
         $this->cleanRequest = $this->request;
-        array_walk_recursive($this->cleanRequest, 'ToppaFunctions::htmlentitiesCallback');
-        array_walk_recursive($this->cleanRequest, 'ToppaFunctions::trimCallback');
+        array_walk_recursive($this->cleanRequest, 'ButtonableFunctions::htmlentitiesCallback');
+        array_walk_recursive($this->cleanRequest, 'ButtonableFunctions::trimCallback');
         return $this->cleanRequest;
     }
 
@@ -114,13 +112,15 @@ class ButtonableSettingsMenuHandler {
     }
 
     private function validateRequestedButtons($formName, $settingsName) {
-        foreach ($this->cleanRequest[$formName] as $handle=>$newSettings) {
-            if (isset($newSettings['active']) && $newSettings['active'] != 'y' && $newSettings['active'] != 'n') {
-                return false;
-            }
+        if (is_array($this->cleanRequest[$formName])) {
+            foreach ($this->cleanRequest[$formName] as $handle=>$newSettings) {
+                if (isset($newSettings['active']) && $newSettings['active'] != 'y' && $newSettings['active'] != 'n') {
+                    return false;
+                }
 
-            if (!array_key_exists($handle, $this->settings->$settingsName)) {
-                return false;
+                if (!array_key_exists($handle, $this->settings->$settingsName)) {
+                    return false;
+                }
             }
         }
 
@@ -139,8 +139,10 @@ class ButtonableSettingsMenuHandler {
         $settings = array();
         $settings[$settingsName] = $this->settings->$settingsName;
 
-        foreach ($this->cleanRequest[$formName] as $handle=>$newSettings) {
-            $settings[$settingsName][$handle]['active'] = $newSettings;
+        if (is_array($this->cleanRequest[$formName])) {
+            foreach ($this->cleanRequest[$formName] as $handle=>$newSettings) {
+                $settings[$settingsName][$handle]['active'] = $newSettings;
+            }
         }
 
         $this->settings->set($settings);
@@ -206,14 +208,10 @@ class ButtonableSettingsMenuHandler {
             return array();
         }
 
-        $settings = array();
-        $settings['customButtons'] = $this->settings->customButtons;
-
         foreach ($this->cleanRequest['buttonableDeleteButton'] as $handle=>$delete) {
-            unset($settings['customButtons'][$handle]);
+            $this->settings->purge(array('customButtons', $handle));
         }
 
-        $this->settings->set($settings);
-        return $settings;
+        return $this->settings->customButtons;
     }
 }
