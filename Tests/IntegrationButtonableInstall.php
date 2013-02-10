@@ -8,7 +8,7 @@ class IntegrationButtonableInstall extends UnitTestCase {
     }
 
     public function setUp() {
-        $functionsFacade = new ToppaFunctionsFacadeWp();
+        $functionsFacade = new ButtonableFunctionsFacade();
         $this->settings = new ButtonableSettings($functionsFacade);
     }
 
