@@ -1,13 +1,15 @@
 <?php
 
 class Buttonable {
-    private $version = '1.1.3';
+    private $version = '1.1.5';
+    private $startPath;
     private $customDialogPath;
     private $customDialogBackupPath;
 
-    public function __construct() {
-        $this->customDialogPath = dirname(__FILE__) . '/Display/custom-dialogs.html';
-        $this->customDialogBackupPath = dirname(dirname(__FILE__)) . '/custom-dialogs.html';
+    public function __construct($startPath) {
+        $this->startPath = $startPath;
+        $this->customDialogPath = dirname($startPath) . '/Display/custom-dialogs.html';
+        $this->customDialogBackupPath = dirname(dirname($startPath)) . '/custom-dialogs.html';
     }
 
     public function getVersion() {
@@ -73,8 +75,8 @@ class Buttonable {
 
     public function initSettingsMenu() {
         add_options_page(
-            'Extensible HTML Editor Buttons',
-            'Extensible HTML Editor Buttons',
+            __('Extensible HTML Editor Buttons', 'buttonable'),
+            __('Extensible HTML Editor Buttons', 'buttonable'),
             'manage_options',
             'buttonable',
             array($this, 'displaySettingsMenu')
@@ -84,7 +86,7 @@ class Buttonable {
     public function displaySettingsMenu() {
         try {
             $container = new ButtonableContainer();
-            $settingsMenuHandler = $container->getSettingsMenuHandler();
+            $settingsMenuHandler = $container->getSettingsMenuHandler($this->startPath);
             echo $settingsMenuHandler->run();
         }
 
@@ -96,7 +98,7 @@ class Buttonable {
     public function initButtons() {
         try {
             $container = new ButtonableContainer();
-            $editorHandler = $container->getEditorHandler();
+            $editorHandler = $container->getEditorHandler($this->startPath);
             echo $editorHandler->addButtons();
         }
 
@@ -108,7 +110,7 @@ class Buttonable {
     public function hideInactiveElements() {
         try {
             $container = new ButtonableContainer();
-            $editorHandler = $container->getEditorHandler();
+            $editorHandler = $container->getEditorHandler($this->startPath);
             echo $editorHandler->hideInactiveElements();
         }
 
@@ -150,20 +152,20 @@ class Buttonable {
      * For external plugins to register custom buttons. Registered
      * buttons are automatically set to active.
      *
-     * @param string $handle the name to use when referring to the custom button (eg: anchor)
+     * @param string $handle the name of your custom button (eg: anchor)
      * @param string $tag the tag to insert, not including delimiters (eg: a)
      * @param string $title the title attribute for the button tag (eg: add anchor tag)
      * @param string $id the id attribute for the button tag; should start with ed_ (eg: ed_anchor)
-     * @param string $self_close 'y' if a self-closing tag (eg: an image tag) 'n' otherwise
+     * @param string $selfClose 'y' if a self-closing tag (eg: an image tag) 'n' otherwise
      * @param string $shortcode 'y' if a WordPress shortcode tag, 'n' if an html tag
      * @param string $path optional path to the html file for the button's dialog, relative to the WP
      *     base dir (eg: /wp-content/plugins/your_plugin/anchor_dialog.html)
      * @static
      * @access public
+     * @return true
      */
     public static function registerButton($handle, $tag, $title, $id, $selfClose, $shortcode, $path = null) {
         try {
-            $buttonableAutoLoader = new ToppaAutoLoaderWp('/extensible-html-editor-buttons');
             $container = new ButtonableContainer();
             $externalButtonHandler = $container->getExternalButtonHandler();
             $externalButtonHandler->registerButton($handle, $tag, $title, $id, $selfClose, $shortcode, $path);
@@ -179,13 +181,13 @@ class Buttonable {
     /**
      * To register a button. This should be called by your plugins deactivation hook
      *
-     * @param string $handle the name to use when referring to the custom button (eg: anchor)
+     * @param string $handle the name of your custom button (eg: anchor)
      * @static
      * @access public
+     * @return true
      */
     public static function deregisterButton($handle) {
         try {
-            $buttonableAutoLoader = new ToppaAutoLoaderWp('/extensible-html-editor-buttons');
             $container = new ButtonableContainer();
             $externalButtonHandler = $container->getExternalButtonHandler();
             $externalButtonHandler->deregisterButton($handle);
