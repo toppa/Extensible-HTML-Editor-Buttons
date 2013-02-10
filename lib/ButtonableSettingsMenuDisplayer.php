@@ -2,10 +2,11 @@
 
 class ButtonableSettingsMenuDisplayer {
     private $settings;
-    private $relativePathToTemplate = 'Display/settings.php';
+    private $pathToTemplate;
     private $customButtonRefData;
 
-    public function __construct() {
+    public function __construct($startPath) {
+        $this->pathToTemplate = dirname($startPath) . '/Display/settings.php';
     }
 
     public function setSettings(ButtonableSettings $settings) {
@@ -20,7 +21,7 @@ class ButtonableSettingsMenuDisplayer {
 
     public function run($message = null) {
         ob_start();
-        require_once($this->relativePathToTemplate);
+        require_once $this->pathToTemplate;
         $settingsMenu = ob_get_contents();
         ob_end_clean();
         return $settingsMenu;
@@ -50,7 +51,7 @@ class ButtonableSettingsMenuDisplayer {
                 $html .= '<tr valign="top">' . PHP_EOL;
                 $html .= '<td>' . __('Use', 'buttonable') . " <strong>$handle</strong> " . __('button?', 'buttonable') . '</td>' . PHP_EOL;
                 $inputField = $type . '[' . $handle . ']';
-                $html .= '<td>' . ToppaHtmlFormField::quickBuild($inputField, $refData, $values['active']) . '</td>' . PHP_EOL;
+                $html .= '<td>' . ButtonableHtmlFormField::quickBuild($inputField, $refData, $values['active']) . '</td>' . PHP_EOL;
                 $html .= '</tr>' . PHP_EOL;
             }
         }
@@ -89,7 +90,7 @@ class ButtonableSettingsMenuDisplayer {
                     $html .= '<tr valign="top">' . PHP_EOL;
                     $html .= '<td>' . $buttonRefData[$k]['name'] . '</td>' . PHP_EOL;
                     $html .= '<td>';
-                    $html .= ToppaHtmlFormField::quickBuild("buttonableCustomButtons[$handle][$k]", $refData, $v);
+                    $html .= ButtonableHtmlFormField::quickBuild("buttonableCustomButtons[$handle][$k]", $refData, $v);
                     $html .= '</td>' . PHP_EOL;
                     $html .= '</tr>' . PHP_EOL;
                 }
@@ -103,7 +104,7 @@ class ButtonableSettingsMenuDisplayer {
 
                 $html .= '<tr valign="top">' . PHP_EOL;
                 $html .= '<td colspan="2">'
-                    . ToppaHtmlFormField::quickBuild("buttonableDeleteButton[$handle]", $checkboxRefData)
+                    . ButtonableHtmlFormField::quickBuild("buttonableDeleteButton[$handle]", $checkboxRefData)
                     . '</td>' . PHP_EOL;
                 $html .= '</tr>' . PHP_EOL;
             }
@@ -158,7 +159,7 @@ class ButtonableSettingsMenuDisplayer {
         $html = '<tr valign="top">' . PHP_EOL;
         $html .= '<td nowrap="nowrap">' . __('Name', 'buttonable') . '</td>' . PHP_EOL;
         $html .= '<td>'
-            . ToppaHtmlFormField::quickBuild('buttonableNewButton[handle]', $refData, $addButtonValidation['handle'])
+            . ButtonableHtmlFormField::quickBuild('buttonableNewButton[handle]', $refData, $addButtonValidation['handle'])
             . '</td>' . PHP_EOL;
         $html .= '<td>'
             . __('The label shown on the button in the HTML Editor, so keep it short. Also, if you create a custom dialog, use this for naming it\'s elements - example: for "blink" the div id of your form would be "buttonable_blink_dialog"', 'buttonable')
@@ -174,7 +175,7 @@ class ButtonableSettingsMenuDisplayer {
             $html .= '<tr valign="top">' . PHP_EOL;
             $html .= '<td nowrap="nowrap">' . $v['name'] . '</td>' . PHP_EOL;
             $html .= '<td>';
-            $html .= ToppaHtmlFormField::quickBuild("buttonableNewButton[settings][$k]", $refData, $inputValue);
+            $html .= ButtonableHtmlFormField::quickBuild("buttonableNewButton[settings][$k]", $refData, $inputValue);
             $html .= '</td>' . PHP_EOL;
             $html .= '<td>' . $v['help'] . '</td>' . PHP_EOL;
             $html .= '</tr>' . PHP_EOL;
