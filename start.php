@@ -4,20 +4,22 @@ Plugin Name: Extensible HTML Editor Buttons
 Plugin URI: http://www.toppa.com/extensible-html-editor-buttons-wordpress-plugin/
 Description: A plugin for adding custom buttons to the WordPress HTML Editor.
 Author: Michael Toppa
-Version: 1.1.4
+Version: 1.1.5
 Author URI: http://www.toppa.com
 */
 
-$buttonableAutoLoaderPath = dirname(__FILE__) . '/../toppa-plugin-libraries-for-wordpress/ToppaAutoLoaderWp.php';
+$buttonablePath = dirname(__FILE__);
+$buttonableParentDir = basename($buttonablePath);
+$buttonableAutoLoaderPath = $buttonablePath . '/lib/buttonableAutoLoader.php';
+
 add_action('wpmu_new_blog', 'buttonableActivateForNewNetworkSite');
 register_activation_hook(__FILE__, 'buttonableActivate');
-load_plugin_textdomain('buttonable', false, basename(dirname(__FILE__)) . '/Languages/');
+load_plugin_textdomain('buttonable', false, $buttonableParentDir . '/Languages/');
 
 if (file_exists($buttonableAutoLoaderPath)) {
     require_once($buttonableAutoLoaderPath);
-    $buttonableToppaAutoLoader = new ToppaAutoLoaderWp('/toppa-plugin-libraries-for-wordpress');
-    $buttonableAutoLoader = new ToppaAutoLoaderWp('/extensible-html-editor-buttons');
-    $buttonable = new Buttonable();
+    new ButtonableAutoLoader('/' . $buttonableParentDir . '/lib');
+    $buttonable = new Buttonable(__FILE__);
     $buttonable->run();
 }
 
@@ -33,50 +35,32 @@ function buttonableActivateForNewNetworkSite($blog_id) {
 }
 
 function buttonableActivate() {
-    $autoLoaderPath = dirname(__FILE__) . '/../toppa-plugin-libraries-for-wordpress/ToppaAutoLoaderWp.php';
-
     $status = buttonableActivationChecks();
 
     if (is_string($status)) {
         buttonableCancelActivation($status);
     }
-
-    require_once($autoLoaderPath);
-    $toppaAutoLoader = new ToppaAutoLoaderWp('/toppa-plugin-libraries-for-wordpress');
-    $buttonableAutoLoader = new ToppaAutoLoaderWp('/extensible-html-editor-buttons');
-    $buttonable = new Buttonable();
-    $status = $buttonable->install();
-
-    if (is_string($status)) {
-        buttonableCancelActivation($status);
-        return null;
-    }
-
-    return null;
 }
 
+// this is also used by ButtonableInstall when doing a runtime upgrade
 function buttonableActivationChecks() {
-    $autoLoaderPath = dirname(__FILE__) . '/../toppa-plugin-libraries-for-wordpress/ToppaAutoLoaderWp.php';
-    $toppaLibsVersion = get_option('toppaLibsVersion');
-
-    if (!file_exists($autoLoaderPath) || !$toppaLibsVersion || version_compare($toppaLibsVersion, '1.3.6', '<')) {
-        return __('To activate Extensible HTML Editor Buttons you need to have the current version of', 'buttonable')
-            . ' <a href="plugin-install.php?tab=plugin-information&plugin=toppa-plugin-libraries-for-wordpress">Toppa Plugins Libraries for WordPress</a>. '
-            . __('Click the link to view details, and then click the "Install Now" button to get the current version. Then you can activate Extensible HTML Editor Buttons.', 'buttonable');
-    }
-
     if (!function_exists('spl_autoload_register')) {
-        return __('You must have at least PHP 5.1.2 to use Extensible HTML Editor Buttons', 'buttonable');
+        $status = __('You must have at least PHP 5.1.2 to use Extensible HTML Editor Buttons', 'buttonable');
     }
 
-    if (version_compare(get_bloginfo('version'), '3.1', '<')) {
-        return __('You must have at least WordPress 3.1 to use Extensible HTML Editor Buttons', 'buttonable');
+    elseif (version_compare(get_bloginfo('version'), '3.0', '<')) {
+        $status = __('You must have at least WordPress 3.0 to use Extensible HTML Editor Buttons', 'buttonable');
     }
 
-    return true;
+    else {
+        $status = true;
+    }
+
+    return $status;
 }
+
 function buttonableCancelActivation($message) {
-    deactivate_plugins('extensible-html-editor-buttons/start.php');
+    deactivate_plugins(__FILE__);
     wp_die($message);
 }
 
