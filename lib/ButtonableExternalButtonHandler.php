@@ -12,7 +12,7 @@ class ButtonableExternalButtonHandler {
         return $this->settings;
     }
 
-    public function setFunctionsFacade(ToppaFunctionsFacade $functionsFacade) {
+    public function setFunctionsFacade(ButtonableFunctionsFacade $functionsFacade) {
         $this->functionsFacade = $functionsFacade;
         return $this->functionsFacade;
     }
