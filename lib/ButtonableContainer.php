@@ -15,7 +15,7 @@ class ButtonableContainer {
 
     public function getFunctionsFacade() {
         if (!$this->functionsFacade) {
-            $this->functionsFacade = new ToppaFunctionsFacadeWp();
+            $this->functionsFacade = new ButtonableFunctionsFacade();
         }
         return $this->functionsFacade;
     }
@@ -50,11 +50,11 @@ class ButtonableContainer {
         return $this->customButtonRefData;
     }
 
-    public function getSettingsMenuDisplayer() {
+    public function getSettingsMenuDisplayer($startPath) {
         if (!$this->settingsMenuDisplayer) {
             $this->getSettings();
             $this->getCustomButtonRefData();
-            $this->settingsMenuDisplayer = new ButtonableSettingsMenuDisplayer();
+            $this->settingsMenuDisplayer = new ButtonableSettingsMenuDisplayer($startPath);
             $this->settingsMenuDisplayer->setSettings($this->settings);
             $this->settingsMenuDisplayer->setCustomButtonRefData($this->customButtonRefData);
         }
@@ -62,10 +62,10 @@ class ButtonableContainer {
         return $this->settingsMenuDisplayer;
     }
 
-    public function getSettingsMenuHandler() {
+    public function getSettingsMenuHandler($startPath) {
         if (!$this->settingsMenuHandler) {
             $this->getSettings();
-            $this->getSettingsMenuDisplayer();
+            $this->getSettingsMenuDisplayer($startPath);
             $this->getCustomButtonRefData();
             $this->settingsMenuHandler = new ButtonableSettingsMenuHandler();
             $this->settingsMenuHandler->setRequest($_REQUEST);
@@ -77,11 +77,11 @@ class ButtonableContainer {
         return $this->settingsMenuHandler;
     }
 
-    public function getEditorHandler() {
+    public function getEditorHandler($startPath) {
         if (!$this->editorHandler) {
             $this->getSettings();
             $this->getFunctionsFacade();
-            $this->editorHandler = new ButtonableEditorHandler();
+            $this->editorHandler = new ButtonableEditorHandler($startPath);
             $this->editorHandler->setSettings($this->settings);
             $this->editorHandler->setFunctionsFacade($this->functionsFacade);
             $this->editorHandler->setScriptName($_SERVER['SCRIPT_NAME']);
