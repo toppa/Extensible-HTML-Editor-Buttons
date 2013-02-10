@@ -3,12 +3,11 @@
 // this is needed for simpletest's addFile method
 set_include_path(get_include_path() . PATH_SEPARATOR . dirname(__FILE__));
 
-$buttonableTestsAutoLoaderPath = dirname(__FILE__) . '/../../toppa-plugin-libraries-for-wordpress/ToppaAutoLoaderWp.php';
+$buttonableTestsAutoLoaderPath = dirname(__FILE__) . '/../lib/ButtonableAutoLoaderWp.php';
 
 if (file_exists($buttonableTestsAutoLoaderPath)) {
     require_once($buttonableTestsAutoLoaderPath);
-    $buttonableTestsToppaAutoLoader = new ToppaAutoLoaderWp('/toppa-plugin-libraries-for-wordpress');
-    $buttonableTestsAutoLoader = new ToppaAutoLoaderWp('/extensible-html-editor-buttons');
+    $buttonableTestsAutoLoader = new ButtonableAutoLoader('/extensible-html-editor-buttons/lib');
 }
 
 class ButtonableUnitTestsSuite extends TestSuite {
