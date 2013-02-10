@@ -217,9 +217,9 @@ class UnitButtonableSettingsMenuHandler extends UnitTestCase {
                 'shortcode' => 'n',
                 'active' => 'y',
                 'input_dialog' => 'y'),
-            'anchor' => array(
+            'link' => array(
                 'tag' => 'a',
-                'title' => 'add anchor tag',
+                'title' => 'add link tag',
                 'id' => 'ed_link',
                 'self_close' => 'n',
                 'shortcode' => 'n',
@@ -250,7 +250,7 @@ class UnitButtonableSettingsMenuHandler extends UnitTestCase {
                 'active' => 'n'),
             'span' => array(
                 'active' => 'n'),
-            'anchor' => array(
+            'link' => array(
                 'active' => 'n'),
             'img' => array(
                 'active' => 'n'),
@@ -270,7 +270,7 @@ class UnitButtonableSettingsMenuHandler extends UnitTestCase {
                 'active' => 'bar'), // bad value
             'span' => array(
                 'active' => 'n'),
-            'anchor' => array(
+            'link' => array(
                 'active' => 'n'),
             'img' => array(
                 'active' => 'n'),
@@ -290,7 +290,7 @@ class UnitButtonableSettingsMenuHandler extends UnitTestCase {
                 'active' => 'n'),
             'span' => array(
                 'active' => 'n'),
-            'anchor' => array(
+            'link' => array(
                 'active' => 'n'),
             'img' => array(
                 'active' => 'n'),
@@ -308,7 +308,7 @@ class UnitButtonableSettingsMenuHandler extends UnitTestCase {
             'buttonableBuiltInButtons' => array(
                 'div' => 'n',
                 'span' => 'n',
-                'anchor' => 'n',
+                'link' => 'n',
                 'img' => 'n',
             )
         );
@@ -331,9 +331,9 @@ class UnitButtonableSettingsMenuHandler extends UnitTestCase {
                     'shortcode' => 'n',
                     'active' => 'n',
                     'input_dialog' => 'y'),
-                'anchor' => array(
+                'link' => array(
                     'tag' => 'a',
-                    'title' => 'add anchor tag',
+                    'title' => 'add link tag',
                     'id' => 'ed_link',
                     'self_close' => 'n',
                     'shortcode' => 'n',
@@ -370,7 +370,7 @@ class UnitButtonableSettingsMenuHandler extends UnitTestCase {
                 'active' => 'n'),
             'span' => array(
                 'active' => 'n'),
-            'anchor' => array(
+            'link' => array(
                 'active' => 'n'),
             'img' => array(
                 'active' => 'n'),
@@ -388,7 +388,7 @@ class UnitButtonableSettingsMenuHandler extends UnitTestCase {
             'buttonableExternalPluginButtons' => array(
                 'div' => 'n',
                 'span' => 'n',
-                'anchor' => 'n',
+                'link' => 'n',
                 'img' => 'n',
             )
         );
@@ -411,9 +411,9 @@ class UnitButtonableSettingsMenuHandler extends UnitTestCase {
                     'shortcode' => 'n',
                     'active' => 'n',
                     'input_dialog' => 'y'),
-                'anchor' => array(
+                'link' => array(
                     'tag' => 'a',
-                    'title' => 'add anchor tag',
+                    'title' => 'add link tag',
                     'id' => 'ed_link',
                     'self_close' => 'n',
                     'shortcode' => 'n',

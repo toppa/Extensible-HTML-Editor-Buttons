@@ -22,9 +22,9 @@ class UnitButtonableSettings extends UnitTestCase {
                 'shortcode' => 'n',
                 'active' => 'y',
                 'input_dialog' => 'y'),
-            'anchor' => array(
+            'link' => array(
                 'tag' => 'a',
-                'title' => 'add anchor tag',
+                'title' => 'add link tag',
                 'id' => 'ed_link',
                 'self_close' => 'n',
                 'shortcode' => 'n',

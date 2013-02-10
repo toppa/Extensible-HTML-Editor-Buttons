@@ -21,9 +21,9 @@ class ButtonableInstall {
                 'shortcode' => 'n',
                 'active' => 'y',
                 'input_dialog' => 'y'),
-            'anchor' => array(
+            'link' => array(
                 'tag' => 'a',
-                'title' => 'add anchor tag',
+                'title' => 'add link tag',
                 'id' => 'ed_anchor',
                 'self_close' => 'n',
                 'shortcode' => 'n',

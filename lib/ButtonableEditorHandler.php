@@ -34,7 +34,7 @@ class ButtonableEditorHandler {
 
         $style = '<style type="text/css">' . PHP_EOL;
 
-        if ($this->settings->buttons['anchor']['active'] == 'y') {
+        if ($this->settings->buttons['link']['active'] == 'y') {
             $style .= '#qt_content_link { display: none; }' . PHP_EOL;
         }
 
