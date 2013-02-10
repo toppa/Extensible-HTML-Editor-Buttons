@@ -2,6 +2,7 @@
 
 class ButtonableInstall {
     private $settings;
+    private $functionsFacade;
     private $settingsDefaults = array(
         'buttons' => array(
             'div' => array(
@@ -49,7 +50,7 @@ class ButtonableInstall {
         return $this->settings;
     }
 
-    public function setFunctionsFacade(ToppaFunctionsFacade $functionsFacade) {
+    public function setFunctionsFacade(ButtonableFunctionsFacade $functionsFacade) {
         $this->functionsFacade = $functionsFacade;
         return $this->functionsFacade;
     }
