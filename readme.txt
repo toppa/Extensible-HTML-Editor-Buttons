@@ -3,8 +3,8 @@ Contributors: toppa
 Donate link: http://www.toppa.com/extensible-html-editor-buttons-wordpress-plugin
 Tags: post, admin, button, editor, jquery, quicktag
 Requires at least: 3.3
-Tested up to: 3.4.2
-Stable tag: 1.1.4
+Tested up to: 3.5.1
+Stable tag: 1.2
 License: GPLv2 or later
 
 A plugin for adding custom buttons to the WordPress HTML Editor, including custom modal dialogs.
@@ -13,24 +13,30 @@ A plugin for adding custom buttons to the WordPress HTML Editor, including custo
 
 Extensible HTML Editor Buttons enhances the WordPress HTML Editor button bar in 5 ways:
 
+1. Gives you the option to replace the standard anchor and image buttons with new versions that provide modal input dialogs with more options (class, style, image width, height, etc.)
+1. Adds two new buttons: div and span, each with their own modal input dialogs, for class, style, etc. attributes (you can disable them if you wish)
 1. Provides a WYSIWYG settings form for adding your own custom buttons
 1. Provides an example HTML file, which you can follow to add your own custom modal input dialogs for your custom buttons, for setting tag attributes such as style, class, or any attributes you specify
-1. Adds two new buttons: div and span, each with their own modal input dialogs, for class, style, etc. attributes (you can disable then if you wish)
-1. Gives you the option to replace the standard anchor and image buttons with new versions that provide modal input dialogs with more options (class, style, image width, height, etc.)
 1. Provides an API for other plugins to add their own buttons and custom modal dialogs
 
-New in version 1.1: multi-site compatible, and preserves your custom-dialogs.html file (but you will still need to backup and restore it yourself one more time, since the old version of the plugin doesn't have the code for doing the backup before the plugin upgrade is initiated)
+It is multi-site compatible.
 
-**Installation of [Toppa Plugin Libraries for WordPress](http://wordpress.org/extend/plugins/toppa-plugin-libraries-for-wordpress/) is required for this plugin. Please download and install it first.**
+**Get Help**
 
-A translation file is included for language localization. If you are bilingual, please contribute a translation!
+Enter a post in [the wordpress.org support forum for Extensible HTML Editor Buttons](http://wordpress.org/support/plugin/extensible-html-editor-buttons), and I'll respond there.
+
+**Give Help**
+
+* Provide a language translation - [here's how](http://weblogtoolscollection.com/archives/2007/08/27/localizing-a-wordpress-plugin-using-poedit/)
+* Fork [the Extensible HTML Editor Buttons repository on github](https://github.com/toppa/Extensible-HTML-Editor-Buttons) and make a code contribution
+* If you're savvy user of the plugin, [answer questions in the support forum](http://wordpress.org/support/plugin/extensible-html-editor-buttons)
+* If you tip your pizza delivery guy, tip your plugin developer - [make a donation](http://www.toppa.com/extensible-html-editor-buttons-wordpress-plugin/)
 
 == Installation ==
 
-1. Install the [Toppa Plugin Libraries for WordPress](http://wordpress.org/extend/plugins/toppa-plugin-libraries-for-wordpress/) plugin
 1. Install Extensible HTML Editor Buttons in your plugin folder and activate.
 1. Go to the Extensible HTML Editor Buttons settings menu to configure it, then edit a post or page using the HTML editor to see it in action
-
+1. If you want to make a custom buttons with its own custom dialog form, look for the "custom-dialogs-example.html" file in the Extensible HTML Editor Buttons "display" directory, and follow the instructions in the comments.
 
 == Frequently Asked Questions ==
 
@@ -41,6 +47,13 @@ Please go to <a href="http://www.toppa.com/extensible-html-editor-buttons-wordpr
 1. A custom modal dialog created with Extensible HTML Editor Buttons
 
 == Changelog ==
+
+= 1.2 =
+
+* Use Toppa Libs locally, instead of loading from external plugin
+* Rename "anchor" button to "link"
+* Bug fix: correctly save enable/disable for externally registered buttons
+* Bug fix: delete custom buttons when requested
 
 = 1.1.4 = Documentation improvements
 
