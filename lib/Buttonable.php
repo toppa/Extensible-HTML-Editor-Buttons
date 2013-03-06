@@ -8,7 +8,7 @@ class Buttonable {
 
     public function __construct($startPath) {
         $this->startPath = $startPath;
-        $this->customDialogPath = dirname($startPath) . '/Display/custom-dialogs.html';
+        $this->customDialogPath = dirname($startPath) . '/display/custom-dialogs.html';
         $this->customDialogBackupPath = dirname(dirname($startPath)) . '/custom-dialogs.html';
     }
 

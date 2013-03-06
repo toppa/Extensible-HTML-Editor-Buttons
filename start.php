@@ -14,7 +14,7 @@ $buttonableAutoLoaderPath = $buttonablePath . '/lib/buttonableAutoLoader.php';
 
 add_action('wpmu_new_blog', 'buttonableActivateForNewNetworkSite');
 register_activation_hook(__FILE__, 'buttonableActivate');
-load_plugin_textdomain('buttonable', false, $buttonableParentDir . '/Languages/');
+load_plugin_textdomain('buttonable', false, $buttonableParentDir . '/languages/');
 
 if (file_exists($buttonableAutoLoaderPath)) {
     require_once($buttonableAutoLoaderPath);

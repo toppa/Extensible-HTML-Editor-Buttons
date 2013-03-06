@@ -76,7 +76,7 @@ class ButtonableEditorHandler {
     }
 
     public function enqueueScriptsAndStylesheets() {
-        $displayUrl = $this->functionsFacade->getPluginsUrl('/Display/', $this->startPath);
+        $displayUrl = $this->functionsFacade->getPluginsUrl('/display/', $this->startPath);
         $this->functionsFacade->enqueueScript(
             'buttonableJs',
             $displayUrl . 'buttonController.js',
@@ -138,7 +138,7 @@ class ButtonableEditorHandler {
     }
 
     public function setDisplayDir() {
-        $this->displayDir = dirname($this->startPath) . '/Display/';
+        $this->displayDir = dirname($this->startPath) . '/display/';
         return $this->displayDir;
     }
 

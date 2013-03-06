@@ -6,7 +6,7 @@ class ButtonableSettingsMenuDisplayer {
     private $customButtonRefData;
 
     public function __construct($startPath) {
-        $this->pathToTemplate = dirname($startPath) . '/Display/settings.php';
+        $this->pathToTemplate = dirname($startPath) . '/display/settings.php';
     }
 
     public function setSettings(ButtonableSettings $settings) {
