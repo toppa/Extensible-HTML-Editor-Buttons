@@ -69,7 +69,7 @@ class ButtonableFunctions {
 
     public static function throwExceptionIfNotString($expectedString) {
         if (!is_string($expectedString)) {
-             throw new Exception(__('Not a string', 'toppalibs'));
+             throw new Exception(__('Not a string', 'buttonable'));
         }
 
 
@@ -78,7 +78,7 @@ class ButtonableFunctions {
 
     public static function throwExceptionIfNotArray($expectedArray) {
         if (!is_array($expectedArray)) {
-             throw new Exception(__('Not an array', 'toppalibs'));
+             throw new Exception(__('Not an array', 'buttonable'));
         }
         return true;
     }

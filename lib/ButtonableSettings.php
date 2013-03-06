@@ -23,7 +23,7 @@ class ButtonableSettings {
             return $this->data[$name];
         }
 
-        throw New Exception(__('Invalid data property __get for ', 'toppalibs') . htmlentities($name));
+        throw New Exception(__('Invalid data property __get for ', 'buttonable') . htmlentities($name));
     }
 
     public function refresh() {
@@ -55,7 +55,7 @@ class ButtonableSettings {
         $this->functionsFacade->deleteSetting($this->name);
 
         if ($this->functionsFacade->getSetting($this->name)) {
-            throw new Exception(__('Failed to delete settings', 'toppalibs'));
+            throw new Exception(__('Failed to delete settings', 'buttonable'));
         }
 
         return true;
@@ -77,7 +77,7 @@ class ButtonableSettings {
             unset($this->data[$settingToRemove[0]][$settingToRemove[1]][$settingToRemove[2]]);
         }
         else {
-            throw new Exception(__('Failed to purge settings. Unsupport argument provided.', 'toppalibs'));
+            throw new Exception(__('Failed to purge settings. Unsupport argument provided.', 'buttonable'));
         }
 
         $this->functionsFacade->setSetting($this->name, $this->data);
