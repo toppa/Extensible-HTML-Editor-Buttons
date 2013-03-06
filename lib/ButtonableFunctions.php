@@ -40,7 +40,7 @@ class ButtonableFunctions {
         // if timestamp comes in as a float, it'll be translated to, e.g. 1.30152466512E+13
         // and casting it to an int will not give us the original number
         if ($timestamp) {
-            ToppaFunctions::throwExceptionIfNotString($timestamp);
+            ButtonableFunctions::throwExceptionIfNotString($timestamp);
         }
 
         switch (strlen($timestamp)) {
@@ -88,7 +88,7 @@ class ButtonableFunctions {
     }
 
     public static function getFileExtension($fileName) {
-        ToppaFunctions::throwExceptionIfNotString($fileName);
+        ButtonableFunctions::throwExceptionIfNotString($fileName);
         $fileNameParts = explode('.', $fileName);
         $lastIndexPosition = count($fileNameParts) - 1;
 
@@ -139,7 +139,7 @@ class ButtonableFunctions {
     public static function arrayMergeRecursiveForSettings($oldArray, $newArray) {
         foreach ($newArray as $key => $value) {
             if (array_key_exists($key, $oldArray) && is_array($value)) {
-                $oldArray[$key] = ToppaFunctions::arrayMergeRecursiveForSettings($oldArray[$key], $newArray[$key]);
+                $oldArray[$key] = ButtonableFunctions::arrayMergeRecursiveForSettings($oldArray[$key], $newArray[$key]);
             }
 
             else {

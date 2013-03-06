@@ -67,7 +67,7 @@ class ButtonableHtmlFormField {
     }
 
     public static function quickBuild($name, array $refData, $value = null, $cssClass = null) {
-        $field = new ToppaHtmlFormField($name, $refData, $value, $cssClass);
+        $field = new ButtonableHtmlFormField($name, $refData, $value, $cssClass);
 
         if ($value) {
             $field->setValue($value);

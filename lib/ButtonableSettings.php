@@ -40,11 +40,11 @@ class ButtonableSettings {
         $this->refresh();
 
         if ($preferExisting) {
-            $this->data = ToppaFunctions::arrayMergeRecursiveForSettings($newSettings, $this->data);
+            $this->data = ButtonableFunctions::arrayMergeRecursiveForSettings($newSettings, $this->data);
         }
 
         else {
-            $this->data = ToppaFunctions::arrayMergeRecursiveForSettings($this->data, $newSettings);
+            $this->data = ButtonableFunctions::arrayMergeRecursiveForSettings($this->data, $newSettings);
         }
 
         $this->functionsFacade->setSetting($this->name, $this->data);
