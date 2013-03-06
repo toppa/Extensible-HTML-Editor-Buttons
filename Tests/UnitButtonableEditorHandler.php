@@ -100,7 +100,7 @@ class UnitButtonableEditorHandler extends UnitTestCase {
 
     public function testSetDisplayDir() {
         $handler = $this->setupHandlerForFileSystemMocking();
-        $expectedResult = dirname($this->startPath) . '/Display/';
+        $expectedResult = dirname($this->startPath) . '/display/';
         $this->assertEqual($handler->getDisplayDir(), $expectedResult);
     }
 
