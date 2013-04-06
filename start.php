@@ -4,7 +4,7 @@ Plugin Name: Extensible HTML Editor Buttons
 Plugin URI: http://www.toppa.com/extensible-html-editor-buttons-wordpress-plugin/
 Description: A plugin for adding custom buttons to the WordPress HTML Editor.
 Author: Michael Toppa
-Version: 1.2.2
+Version: 1.2.3
 Author URI: http://www.toppa.com
 */
 

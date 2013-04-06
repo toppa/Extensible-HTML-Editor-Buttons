@@ -1,7 +1,7 @@
 <?php
 
 class Buttonable {
-    private $version = '1.2.2';
+    private $version = '1.2.3';
     private $startPath;
     private $customDialogPath;
     private $customDialogBackupPath;
@@ -124,7 +124,7 @@ class Buttonable {
         try {
             $container = new ButtonableContainer();
             $functionsFacade = $container->getFunctionsFacade();
-            return $this->functionsFacade->callFunctionForNetworkSites(array($this, 'uninstallForNetworkSites'));
+            return $functionsFacade->callFunctionForNetworkSites(array($this, 'uninstallForNetworkSites'));
         }
 
         catch (Exception $e) {
@@ -179,7 +179,7 @@ class Buttonable {
     }
 
     /**
-     * To register a button. This should be called by your plugins deactivation hook
+     * To de-register a button. This should be called by your plugins deactivation hook
      *
      * @param string $handle the name of your custom button (eg: anchor)
      * @static
