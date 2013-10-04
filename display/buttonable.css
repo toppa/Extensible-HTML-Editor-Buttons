@@ -10,3 +10,6 @@
     width: auto;
 }
 
+.ui-autocomplete {
+    z-index: 300003 !important;
+}
