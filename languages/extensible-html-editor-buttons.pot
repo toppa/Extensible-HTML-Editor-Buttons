@@ -1,138 +1,182 @@
-# Copyright (C) 2012 
+# Copyright (C) 2013 
 # This file is distributed under the same license as the  package.
 msgid ""
 msgstr ""
 "Project-Id-Version:  \n"
 "Report-Msgid-Bugs-To: http://wordpress.org/tag/extensible-html-editor-"
 "buttons\n"
-"POT-Creation-Date: 2012-09-07 03:39:32+00:00\n"
+"POT-Creation-Date: 2013-10-04 02:25:16+00:00\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"PO-Revision-Date: 2012-MO-DA HO:MI+ZONE\n"
+"PO-Revision-Date: 2013-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 
-#: Buttonable.php:25
+#: display/settings.php:6 display/settings.php:7
+msgid "Support this plugin"
+msgstr ""
+
+#: display/settings.php:7
+msgid "Support Extensible HTML Editor Buttons"
+msgstr ""
+
+#: display/settings.php:8
+msgid "Extensible HTML Editor Buttons Help"
+msgstr ""
+
+#: display/settings.php:12
+msgid "Extensible HTML Editor Buttons Settings"
+msgstr ""
+
+#: display/settings.php:23 lib/Buttonable.php:78 lib/Buttonable.php:79
+msgid "Extensible HTML Editor Buttons"
+msgstr ""
+
+#: display/settings.php:25
+msgid "Your custom buttons"
+msgstr ""
+
+#: display/settings.php:27
+msgid "Buttons from other plugins"
+msgstr ""
+
+#: display/settings.php:31
+msgid "Update Buttons"
+msgstr ""
+
+#: display/settings.php:41
+msgid "Add a custom button"
+msgstr ""
+
+#: display/settings.php:45
+msgid "Add Button"
+msgstr ""
+
+#: lib/Buttonable.php:27
 msgid "Activation of Extensible HTML Editor Buttons failed. Error Message: "
 msgstr ""
 
-#: Buttonable.php:143
+#: lib/Buttonable.php:145
 msgid "Extensible HTML Editor Buttons Error"
 msgstr ""
 
-#: Buttonable.php:173
+#: lib/Buttonable.php:175
 msgid "Registration of button failed. Error Message: "
 msgstr ""
 
-#: Buttonable.php:195
+#: lib/Buttonable.php:197
 msgid "Deregistration of button failed. Error Message: "
 msgstr ""
 
-#: ButtonableCustomButtonRefData.php:10
-#: Tests/UnitButtonableCustomButtonRefData.php:15
+#: lib/ButtonableCustomButtonRefData.php:10
+#: tests/UnitButtonableCustomButtonRefData.php:15
 msgid "Tag"
 msgstr ""
 
-#: ButtonableCustomButtonRefData.php:11
-#: Tests/UnitButtonableCustomButtonRefData.php:16
+#: lib/ButtonableCustomButtonRefData.php:11
+#: tests/UnitButtonableCustomButtonRefData.php:16
 msgid ""
 "The tag your button will insert, not including delimiters - do not include "
 "&lt; &gt; or [ ] - example: \"blink\""
 msgstr ""
 
-#: ButtonableCustomButtonRefData.php:16
-#: Tests/UnitButtonableCustomButtonRefData.php:21
+#: lib/ButtonableCustomButtonRefData.php:16
+#: tests/UnitButtonableCustomButtonRefData.php:21
 msgid "Title"
 msgstr ""
 
-#: ButtonableCustomButtonRefData.php:17
-#: Tests/UnitButtonableCustomButtonRefData.php:22
+#: lib/ButtonableCustomButtonRefData.php:17
+#: tests/UnitButtonableCustomButtonRefData.php:22
 msgid ""
 "Title text for your button; appears as mouseover help text in most browsers "
 "- example: \"For really annoying blinking text\""
 msgstr ""
 
-#: ButtonableCustomButtonRefData.php:22
-#: Tests/UnitButtonableCustomButtonRefData.php:27
+#: lib/ButtonableCustomButtonRefData.php:22
+#: tests/UnitButtonableCustomButtonRefData.php:27
 msgid "ID"
 msgstr ""
 
-#: ButtonableCustomButtonRefData.php:23
-#: Tests/UnitButtonableCustomButtonRefData.php:28
+#: lib/ButtonableCustomButtonRefData.php:23
+#: tests/UnitButtonableCustomButtonRefData.php:28
 msgid ""
 "The id of your button. This should start with \"ed_\" - example: \"ed_blink\""
 msgstr ""
 
-#: ButtonableCustomButtonRefData.php:28 ButtonableCustomButtonRefData.php:42
-#: ButtonableCustomButtonRefData.php:49 ButtonableSettingsMenuDisplayer.php:43
-#: Tests/UnitButtonableCustomButtonRefData.php:33
-#: Tests/UnitButtonableCustomButtonRefData.php:47
-#: Tests/UnitButtonableCustomButtonRefData.php:54
+#: lib/ButtonableCustomButtonRefData.php:28
+#: lib/ButtonableCustomButtonRefData.php:42
+#: lib/ButtonableCustomButtonRefData.php:49
+#: lib/ButtonableSettingsMenuDisplayer.php:44
+#: tests/UnitButtonableCustomButtonRefData.php:33
+#: tests/UnitButtonableCustomButtonRefData.php:47
+#: tests/UnitButtonableCustomButtonRefData.php:54
 msgid "Yes"
 msgstr ""
 
-#: ButtonableCustomButtonRefData.php:28 ButtonableCustomButtonRefData.php:42
-#: ButtonableCustomButtonRefData.php:49 ButtonableSettingsMenuDisplayer.php:43
-#: Tests/UnitButtonableCustomButtonRefData.php:33
-#: Tests/UnitButtonableCustomButtonRefData.php:47
-#: Tests/UnitButtonableCustomButtonRefData.php:54
+#: lib/ButtonableCustomButtonRefData.php:28
+#: lib/ButtonableCustomButtonRefData.php:42
+#: lib/ButtonableCustomButtonRefData.php:49
+#: lib/ButtonableSettingsMenuDisplayer.php:44
+#: tests/UnitButtonableCustomButtonRefData.php:33
+#: tests/UnitButtonableCustomButtonRefData.php:47
+#: tests/UnitButtonableCustomButtonRefData.php:54
 msgid "No"
 msgstr ""
 
-#: ButtonableCustomButtonRefData.php:29
-#: Tests/UnitButtonableCustomButtonRefData.php:34
+#: lib/ButtonableCustomButtonRefData.php:29
+#: tests/UnitButtonableCustomButtonRefData.php:34
 msgid "Self closing tag"
 msgstr ""
 
-#: ButtonableCustomButtonRefData.php:30
-#: Tests/UnitButtonableCustomButtonRefData.php:35
+#: lib/ButtonableCustomButtonRefData.php:30
+#: tests/UnitButtonableCustomButtonRefData.php:35
 msgid ""
 "Whether your tag self closes (like an &lt;img&gt; tag) or has a separate "
 "closing tag (like a &lt;/p&gt; tag)"
 msgstr ""
 
-#: ButtonableCustomButtonRefData.php:35
-#: Tests/UnitButtonableCustomButtonRefData.php:40
+#: lib/ButtonableCustomButtonRefData.php:35
+#: tests/UnitButtonableCustomButtonRefData.php:40
 msgid "Shortcode"
 msgstr ""
 
-#: ButtonableCustomButtonRefData.php:35
-#: Tests/UnitButtonableCustomButtonRefData.php:40
+#: lib/ButtonableCustomButtonRefData.php:35
+#: tests/UnitButtonableCustomButtonRefData.php:40
 msgid "HTML"
 msgstr ""
 
-#: ButtonableCustomButtonRefData.php:36
-#: Tests/UnitButtonableCustomButtonRefData.php:41
+#: lib/ButtonableCustomButtonRefData.php:36
+#: tests/UnitButtonableCustomButtonRefData.php:41
 msgid "Tag type"
 msgstr ""
 
-#: ButtonableCustomButtonRefData.php:37
-#: Tests/UnitButtonableCustomButtonRefData.php:42
+#: lib/ButtonableCustomButtonRefData.php:37
+#: tests/UnitButtonableCustomButtonRefData.php:42
 msgid ""
 "Whether your tag is a shortcode tag with [ ] delimiters, or an HTML tag with "
 "&lt; &gt; delimiters"
 msgstr ""
 
-#: ButtonableCustomButtonRefData.php:43
-#: Tests/UnitButtonableCustomButtonRefData.php:48
+#: lib/ButtonableCustomButtonRefData.php:43
+#: tests/UnitButtonableCustomButtonRefData.php:48
 msgid "Enabled"
 msgstr ""
 
-#: ButtonableCustomButtonRefData.php:44
-#: Tests/UnitButtonableCustomButtonRefData.php:49
+#: lib/ButtonableCustomButtonRefData.php:44
+#: tests/UnitButtonableCustomButtonRefData.php:49
 msgid ""
 "Whether your button is enabled in the button bar, or disabled and not shown "
 "in the button bar"
 msgstr ""
 
-#: ButtonableCustomButtonRefData.php:50
-#: Tests/UnitButtonableCustomButtonRefData.php:55
+#: lib/ButtonableCustomButtonRefData.php:50
+#: tests/UnitButtonableCustomButtonRefData.php:55
 msgid "Custom Dialog"
 msgstr ""
 
-#: ButtonableCustomButtonRefData.php:51
-#: Tests/UnitButtonableCustomButtonRefData.php:56
+#: lib/ButtonableCustomButtonRefData.php:51
+#: tests/UnitButtonableCustomButtonRefData.php:56
 msgid ""
 "Select \"yes\" to enable a custom input dialog for your button. The dialog "
 "is where you can accept user input for your tag's attributes. Example: for a "
@@ -142,133 +186,108 @@ msgid ""
 "dialogs-example.html)."
 msgstr ""
 
-#: ButtonableExternalButtonHandler.php:25
+#: lib/ButtonableDatabaseFacade.php:246
+msgid "Database query failed. Error message: "
+msgstr ""
+
+#: lib/ButtonableDatabaseFacade.php:249
+msgid "SQL statement: "
+msgstr ""
+
+#: lib/ButtonableDatabaseFacade.php:282 lib/ButtonableFunctions.php:72
+msgid "Not a string"
+msgstr ""
+
+#: lib/ButtonableExternalButtonHandler.php:25
 msgid "the 1st argument ($handle) must be a string"
 msgstr ""
 
-#: ButtonableExternalButtonHandler.php:29
+#: lib/ButtonableExternalButtonHandler.php:29
 msgid "the 2nd argument ($tag) must be a string"
 msgstr ""
 
-#: ButtonableExternalButtonHandler.php:33
+#: lib/ButtonableExternalButtonHandler.php:33
 msgid "the 3rd argument ($title) must be a string"
 msgstr ""
 
-#: ButtonableExternalButtonHandler.php:37
+#: lib/ButtonableExternalButtonHandler.php:37
 msgid "the 4th argument ($id) must be a string"
 msgstr ""
 
-#: ButtonableExternalButtonHandler.php:41
+#: lib/ButtonableExternalButtonHandler.php:41
 msgid "the 5th argument ($selfClose) must be \"y\" or \"n\""
 msgstr ""
 
-#: ButtonableExternalButtonHandler.php:45
+#: lib/ButtonableExternalButtonHandler.php:45
 msgid "the 6th argument ($shortcode) must be \"y\" or \"n\""
 msgstr ""
 
-#: ButtonableSettingsMenuDisplayer.php:51
+#: lib/ButtonableFunctions.php:81
+msgid "Not an array"
+msgstr ""
+
+#: lib/ButtonableSettings.php:26
+msgid "Invalid data property __get for "
+msgstr ""
+
+#: lib/ButtonableSettings.php:58
+msgid "Failed to delete settings"
+msgstr ""
+
+#: lib/ButtonableSettings.php:80
+msgid "Failed to purge settings. Unsupport argument provided."
+msgstr ""
+
+#: lib/ButtonableSettingsMenuDisplayer.php:52
 msgid "Use"
 msgstr ""
 
-#: ButtonableSettingsMenuDisplayer.php:51
+#: lib/ButtonableSettingsMenuDisplayer.php:52
 msgid "button?"
 msgstr ""
 
-#: ButtonableSettingsMenuDisplayer.php:60
-#: ButtonableSettingsMenuDisplayer.php:114
+#: lib/ButtonableSettingsMenuDisplayer.php:61
+#: lib/ButtonableSettingsMenuDisplayer.php:115
 msgid "No buttons of this type are currently defined"
 msgstr ""
 
-#: ButtonableSettingsMenuDisplayer.php:74
-#: ButtonableSettingsMenuDisplayer.php:159
+#: lib/ButtonableSettingsMenuDisplayer.php:75
+#: lib/ButtonableSettingsMenuDisplayer.php:160
 msgid "Name"
 msgstr ""
 
-#: ButtonableSettingsMenuDisplayer.php:100
+#: lib/ButtonableSettingsMenuDisplayer.php:101
 msgid "Delete"
 msgstr ""
 
-#: ButtonableSettingsMenuDisplayer.php:140
+#: lib/ButtonableSettingsMenuDisplayer.php:141
 msgid "Unrecognized button property type"
 msgstr ""
 
-#: ButtonableSettingsMenuDisplayer.php:164
+#: lib/ButtonableSettingsMenuDisplayer.php:165
 msgid ""
 "The label shown on the button in the HTML Editor, so keep it short. Also, if "
 "you create a custom dialog, use this for naming it's elements - example: for "
 "\"blink\" the div id of your form would be \"buttonable_blink_dialog\""
 msgstr ""
 
-#: ButtonableSettingsMenuHandler.php:52
+#: lib/ButtonableSettingsMenuHandler.php:54
 msgid "Requested action not recognized"
 msgstr ""
 
-#: ButtonableSettingsMenuHandler.php:57
+#: lib/ButtonableSettingsMenuHandler.php:59
 msgid "Settings not saved. All fields for custom buttons are required"
 msgstr ""
 
-#: ButtonableSettingsMenuHandler.php:61
+#: lib/ButtonableSettingsMenuHandler.php:63
 msgid "Settings saved"
 msgstr ""
 
-#: Display/settings.php:6 Display/settings.php:7
-msgid "Support this plugin"
-msgstr ""
-
-#: Display/settings.php:7
-msgid "Support Extensible HTML Editor Buttons"
-msgstr ""
-
-#: Display/settings.php:8
-msgid "Extensible HTML Editor Buttons Help"
-msgstr ""
-
-#: Display/settings.php:12
-msgid "Extensible HTML Editor Buttons Settings"
-msgstr ""
-
-#: Display/settings.php:23
-msgid "Extensible HTML Editor Buttons"
-msgstr ""
-
-#: Display/settings.php:25
-msgid "Your custom buttons"
-msgstr ""
-
-#: Display/settings.php:27
-msgid "Buttons from other plugins"
-msgstr ""
-
-#: Display/settings.php:31
-msgid "Update Buttons"
-msgstr ""
-
-#: Display/settings.php:41
-msgid "Add a custom button"
-msgstr ""
-
-#: Display/settings.php:45
-msgid "Add Button"
-msgstr ""
-
-#: start.php:63
-msgid ""
-"To activate Extensible HTML Editor Buttons you need to have the current "
-"version of"
-msgstr ""
-
-#: start.php:65
-msgid ""
-"Click the link to view details, and then click the \"Install Now\" button to "
-"get the current version. Then you can activate Extensible HTML Editor "
-"Buttons."
-msgstr ""
-
-#: start.php:69
+#: start.php:48
 msgid "You must have at least PHP 5.1.2 to use Extensible HTML Editor Buttons"
 msgstr ""
 
-#: start.php:73
+#: start.php:52
 msgid ""
-"You must have at least WordPress 3.1 to use Extensible HTML Editor Buttons"
+"You must have at least WordPress 3.0 to use Extensible HTML Editor Buttons"
 msgstr ""
