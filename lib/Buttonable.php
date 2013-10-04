@@ -1,7 +1,7 @@
 <?php
 
 class Buttonable {
-    private $version = '1.2.3';
+    private $version = '1.2.4';
     private $startPath;
     private $customDialogPath;
     private $customDialogBackupPath;
