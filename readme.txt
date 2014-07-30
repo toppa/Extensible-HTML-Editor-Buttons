@@ -11,6 +11,8 @@ A plugin for adding custom buttons to the WordPress HTML Editor, including custo
 
 == Description ==
 
+**I am currently no longer developing or supporting this plugin. I may resume development and support in the future, but I'm not sure when.**
+
 Extensible HTML Editor Buttons enhances the WordPress HTML Editor button bar in 5 ways:
 
 1. Gives you the option to replace the standard anchor and image buttons with new versions that provide modal input dialogs with more options (class, style, image width, height, etc.)
